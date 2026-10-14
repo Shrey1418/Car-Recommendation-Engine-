@@ -1,0 +1,11 @@
+pandas
+numpy 
+pyyaml
+requests
+requests-cache
+beautifulsoup4
+lxml
+rapidfuzz
+pandera 
+pytest
+ruff
