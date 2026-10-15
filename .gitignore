@@ -4,3 +4,9 @@ logs/
 __pycache__/
 data/raw/
 data/interim/
+data/external/
+data/manual/ncap_ratings.csv
+data/processed/*.db
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
