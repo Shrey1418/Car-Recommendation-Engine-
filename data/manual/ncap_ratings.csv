@@ -1,0 +1,57 @@
+source,rank,company_name,model_name,adult_score,adult_max,adult_stars,child_score,child_max,child_stars,tested,child_stars_basis
+BNCAP,14,Citroen,Aircross,27.05,32,5,40.0,49,4.0,,article
+BNCAP,32,Citroen,Basalt,26.19,32,4,35.9,49,4.0,,article
+BNCAP,13,Honda,Amaze,28.33,32,5,40.81,49,4.0,,article
+BNCAP,6,Hyundai,Venue,31.15,32,5,44.46,49,5.0,,derived from score
+BNCAP,7,Kia,Seltos,31.7,32,5,45.0,49,5.0,,derived from score
+BNCAP,23,Kia,Syros,30.21,32,5,44.42,49,5.0,,derived from score
+BNCAP,26,Mahindra,BE 6,31.97,32,5,45.0,49,5.0,,derived from score
+BNCAP,27,Mahindra,Thar Roxx,31.09,32,5,45.0,49,5.0,,derived from score
+BNCAP,25,Mahindra,XEV 9e,32.0,32,5,45.0,49,5.0,,derived from score
+BNCAP,28,Mahindra,XUV 3XO,29.36,32,5,43.0,49,5.0,,derived from score
+BNCAP,1,Mahindra,XUV 7XO,30.76,32,5,44.97,49,5.0,,derived from score
+BNCAP,21,Maruti Suzuki,Baleno,26.52,32,4,34.81,49,3.0,,derived from score
+BNCAP,3,Maruti Suzuki,Brezza,30.41,32,5,43.0,49,5.0,,derived from score
+BNCAP,20,Maruti Suzuki,Dzire,29.46,32,5,41.57,49,5.0,,derived from score
+BNCAP,15,Maruti Suzuki,Invicto,30.43,32,5,44.9,49,5.0,,derived from score
+BNCAP,17,Maruti Suzuki,Victoris,31.66,32,5,43.0,49,5.0,,derived from score
+BNCAP,12,Maruti Suzuki,e Vitara,31.49,32,5,43.0,49,5.0,,derived from score
+BNCAP,4,Nissan,Tekton,30.49,32,5,45.0,49,5.0,,derived from score
+BNCAP,5,Renault,Duster,30.49,32,5,45.0,49,5.0,,copied from Nissan Tekton (identical per article)
+BNCAP,24,Skoda,Kylaq,30.88,32,5,45.0,49,5.0,,derived from score
+BNCAP,16,Tata,Altroz,29.65,32,5,44.9,49,5.0,,derived from score
+BNCAP,30,Tata,Curvv,29.5,32,5,43.66,49,5.0,,derived from score
+BNCAP,31,Tata,Curvv EV,30.81,32,5,44.83,49,5.0,,derived from score
+BNCAP,33,Tata,Harrier,30.08,32,5,44.54,49,5.0,,derived from score
+BNCAP,19,Tata,Harrier EV,32.0,32,5,45.0,49,5.0,,derived from score
+BNCAP,29,Tata,Nexon,29.41,32,5,43.83,49,5.0,,derived from score
+BNCAP,22,Tata,Nexon EV,29.86,32,5,44.95,49,5.0,,derived from score
+BNCAP,11,Tata,Punch,30.58,32,5,45.0,49,5.0,,derived from score
+BNCAP,2,Tata,Punch EV,31.09,32,5,45.0,49,5.0,,derived from score
+BNCAP,34,Tata,Safari,30.08,32,5,44.54,49,5.0,December 2023,derived from score
+BNCAP,8,Tata,Sierra,31.14,32,5,44.43,49,5.0,,derived from score
+BNCAP,18,Toyota,Innova Hycross,30.47,32,5,45.0,49,5.0,,derived from score
+BNCAP,10,Vinfast,VF6,27.13,32,5,44.41,49,5.0,,derived from score
+BNCAP,9,Vinfast,VF7,28.54,32,5,45.25,49,5.0,,derived from score
+GNCAP,17,Citroen,eC3,20.86,34,0,10.55,49,1.0,,article
+GNCAP,7,Honda,Amaze,27.85,34,2,8.58,49,0.0,,article
+GNCAP,12,Hyundai,Verna,28.18,34,5,42.0,49,5.0,,article
+GNCAP,6,Kia,Carens,22.07,34,3,41.0,49,5.0,,article
+GNCAP,8,Mahindra,Bolero Neo,20.26,34,1,12.71,49,1.0,,article
+GNCAP,10,Mahindra,Scorpio N,29.25,34,5,28.93,49,3.0,,article
+GNCAP,14,Maruti Suzuki,Alto K10,21.67,34,2,3.52,49,0.0,,article
+GNCAP,1,Maruti Suzuki,Celerio,18.04,34,3,18.57,49,2.0,,article
+GNCAP,2,Maruti Suzuki,Ciaz,20.86,34,1,28.57,49,3.0,,article
+GNCAP,5,Maruti Suzuki,Dzire,31.24,32,5,39.2,49,,,article
+GNCAP,18,Maruti Suzuki,Ignis,16.48,34,1,3.86,49,0.0,,article
+GNCAP,16,Maruti Suzuki,S Presso,20.03,34,1,3.52,49,0.0,,article
+GNCAP,3,Maruti Suzuki,Victoris,33.72,34,5,41.0,49,5.0,,article
+GNCAP,15,Maruti Suzuki,Wagon R,19.69,34,1,3.4,49,0.0,,article
+GNCAP,4,Nissan,Magnite,32.31,34,5,33.64,49,3.0,,article
+GNCAP,19,Skoda,Kushaq,29.64,34,5,42.0,49,5.0,,article
+GNCAP,13,Skoda,Slavia,29.71,34,5,42.0,49,5.0,,article
+GNCAP,11,Tata,Harrier,33.05,34,5,45.0,49,5.0,,article
+GNCAP,9,Tata,Nexon,32.22,34,5,44.52,49,5.0,,article
+GNCAP,11,Tata,Safari,33.05,34,5,45.0,49,5.0,,article
+GNCAP,19,Volkswagen,Taigun,29.64,34,5,42.0,49,5.0,,article
+GNCAP,13,Volkswagen,Virtus,29.71,34,5,42.0,49,5.0,,article
