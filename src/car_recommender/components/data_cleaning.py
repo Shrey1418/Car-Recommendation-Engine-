@@ -32,6 +32,37 @@ FUEL_MAP = {
 
 UNCLEAR_SUBTYPES = {"IMT"}
 
+BODY_MAP = {
+    "Hatchback": "Hatchback",
+    "Sedan": "Sedan",
+    "SUV": "SUV",
+    "Crossover": "SUV",
+    "MPV": "MPV",
+    "MUV": "MPV",
+    "Coupe": "Coupe",
+    "Convertible": "Convertible",
+    "Pick-up": "Pickup",
+}
+
+TYPE_MAP = {
+    "Manual": ("Manual", None),
+    "Automatic": ("Automatic", None),
+    "AMT": ("Automatic", "AMT"),
+    "DCT": ("Automatic", "DCT"),
+    "CVT": ("Automatic", "CVT"),
+}
+
+SHREYR_FUEL_MAP = {
+    "Petrol": "Petrol",
+    "Diesel": "Diesel",
+    "CNG": "CNG",
+    "CNG + Petrol": "CNG",
+    "Hybrid": "Hybrid",
+    "Electric": "Electric",
+}
+
+KGM_TO_NM = 9.80665
+
 
 def clean_model_name(name: str) -> str:
     text = str(name)
@@ -129,18 +160,109 @@ def clean_atharvanilawar(raw: pd.DataFrame, max_price: float):
     ]
     return clean[columns].reset_index(drop=True), rejected.reset_index(drop=True)
 
+def fix_make_and_model(make, model):
+    make, model = str(make).strip(), str(model).strip()
+    if make == "Maruti Suzuki R" and model == "Wagon":
+        return "Maruti Suzuki", "Wagon R"
+    if make == "Land Rover Rover":
+        make = "Land Rover"
+        if model.startswith("Range") and not model.startswith("Range Rover"):
+            model = model.replace("Range", "Range Rover", 1)
+    return BRAND_FIXES.get(make, make), model
+
+
+def map_body_type(text):
+    for token in str(text).split(","):
+        token = token.strip()
+        if token in BODY_MAP:
+            return BODY_MAP[token]
+    return None
+
+
+def clean_shreyrmishra(raw: pd.DataFrame) -> pd.DataFrame:
+    df = raw.drop_duplicates().copy()
+    logger.info("shreyrmishra rows after dropping exact duplicates: %d", len(df))
+
+    df = df.rename(
+        columns={
+            "Make": "brand",
+            "Model": "model",
+            "Variant": "variant",
+            "Displacement": "engine_cc",
+            "Cylinders": "cylinders",
+            "Fuel_Tank_Capacity": "fuel_tank_l",
+            "Fuel_Type": "fuel_raw",
+            "Height": "height_mm",
+            "Length": "length_mm",
+            "Width": "width_mm",
+            "Body_Type": "body_raw",
+            "Seating_Capacity": "seats",
+            "Type": "type_raw",
+            "Power.1": "power_ps",
+            "Torque.1": "torque_nm",
+        }
+    )
+
+    pairs = [fix_make_and_model(b, m) for b, m in zip(df["brand"], df["model"])]
+    df["brand"] = [pair[0] for pair in pairs]
+    df["model"] = [pair[1] for pair in pairs]
+    df["variant"] = df["variant"].astype(str).str.strip()
+
+    df["fuel"] = df["fuel_raw"].map(SHREYR_FUEL_MAP)
+    df["body_type"] = df["body_raw"].map(map_body_type)
+    parts = df["type_raw"].map(TYPE_MAP)
+    df["transmission"] = parts.map(lambda p: p[0] if isinstance(p, tuple) else None)
+    df["transmission_subtype"] = parts.map(lambda p: p[1] if isinstance(p, tuple) else None)
+
+    is_kgm = (df["power_ps"] > 0) & (df["torque_nm"] > 0) & (df["torque_nm"] / df["power_ps"] < 0.6)
+    df["torque_was_kgm"] = is_kgm
+    df.loc[is_kgm, "torque_nm"] = (df.loc[is_kgm, "torque_nm"] * KGM_TO_NM).round(1)
+    logger.info("Torque rows converted from kgm to Nm: %d", int(is_kgm.sum()))
+
+    too_high = (df["power_ps"] > 0) & (df["torque_nm"] / df["power_ps"] > 6)
+    df.loc[too_high, "torque_nm"] = None
+    logger.warning("Torque set to unknown because it is impossibly high for the power: %d", int(too_high.sum()))
+
+    zero_means_unknown = [
+        "engine_cc", "cylinders", "fuel_tank_l", "height_mm", "length_mm",
+        "width_mm", "seats", "power_ps", "torque_nm",
+    ]
+    df[zero_means_unknown] = df[zero_means_unknown].where(df[zero_means_unknown] != 0)
+
+    for column in ["fuel", "body_type", "transmission"]:
+        missing = int(df[column].isna().sum())
+        if missing:
+            logger.warning("shreyrmishra rows with unknown %s: %d", column, missing)
+
+    key = ["brand", "model", "variant", "fuel", "transmission"]
+    dupes = int(df.duplicated(key, keep=False).sum())
+    if dupes:
+        logger.warning("shreyrmishra rows sharing the same variant key: %d. Review them.", dupes)
+
+    columns = [
+        "brand", "model", "variant", "fuel", "transmission", "transmission_subtype",
+        "body_type", "seats", "engine_cc", "cylinders", "power_ps", "torque_nm",
+        "torque_was_kgm", "fuel_tank_l", "length_mm", "width_mm", "height_mm",
+    ]
+    return df[columns].reset_index(drop=True)
+
 
 def main():
     try:
         cfg = load_config()
-        raw = pd.read_csv(resolve_path(cfg["sources"]["atharvanilawar"]), low_memory=False)
-        clean, rejected = clean_atharvanilawar(raw, cfg["scope"]["max_price"])
-
         interim = resolve_path(cfg["paths"]["interim_dir"])
         interim.mkdir(parents=True, exist_ok=True)
-        clean.to_csv(interim / "atharvanilawar_clean.csv", index=False)
-        rejected.to_csv(interim / "atharvanilawar_rejected.csv", index=False)
-        logger.info("Saved cleaned file and rejects to %s", interim)
+
+        raw_a = pd.read_csv(resolve_path(cfg["sources"]["atharvanilawar"]), low_memory=False)
+        clean_a, rejected_a = clean_atharvanilawar(raw_a, cfg["scope"]["max_price"])
+        clean_a.to_csv(interim / "atharvanilawar_clean.csv", index=False)
+        rejected_a.to_csv(interim / "atharvanilawar_rejected.csv", index=False)
+
+        raw_s = pd.read_csv(resolve_path(cfg["sources"]["shreyrmishra"]), low_memory=False)
+        clean_s = clean_shreyrmishra(raw_s)
+        clean_s.to_csv(interim / "shreyrmishra_clean.csv", index=False)
+
+        logger.info("Saved cleaned files and rejects to %s", interim)
     except Exception as exc:
         raise CustomException(exc, sys) from exc
 
