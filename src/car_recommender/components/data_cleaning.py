@@ -16,6 +16,7 @@ BRAND_FIXES = {
     "Mercedes Benz": "Mercedes-Benz",
     "Mclaren": "McLaren",
     "Rolls Royce": "Rolls-Royce",
+    "Force": "Force Motors",
 }
 
 FUEL_MAP = {
