@@ -52,7 +52,7 @@ TYPE_MAP = {
     "CVT": ("Automatic", "CVT"),
 }
 
-SHREYR_FUEL_MAP = {
+SPECS_FUEL_MAP = {
     "Petrol": "Petrol",
     "Diesel": "Diesel",
     "CNG": "CNG",
@@ -92,7 +92,7 @@ def split_transmission(text):
     return kind, subtype
 
 
-def clean_atharvanilawar(raw: pd.DataFrame, max_price: float):
+def clean_catalog(raw: pd.DataFrame, max_price: float):
     df = raw.drop_duplicates().copy()
     logger.info("Rows after dropping exact duplicates: %d", len(df))
 
@@ -179,9 +179,9 @@ def map_body_type(text):
     return None
 
 
-def clean_shreyrmishra(raw: pd.DataFrame) -> pd.DataFrame:
+def clean_specs(raw: pd.DataFrame) -> pd.DataFrame:
     df = raw.drop_duplicates().copy()
-    logger.info("shreyrmishra rows after dropping exact duplicates: %d", len(df))
+    logger.info("specs rows after dropping exact duplicates: %d", len(df))
 
     df = df.rename(
         columns={
@@ -208,7 +208,7 @@ def clean_shreyrmishra(raw: pd.DataFrame) -> pd.DataFrame:
     df["model"] = [pair[1] for pair in pairs]
     df["variant"] = df["variant"].astype(str).str.strip()
 
-    df["fuel"] = df["fuel_raw"].map(SHREYR_FUEL_MAP)
+    df["fuel"] = df["fuel_raw"].map(SPECS_FUEL_MAP)
     df["body_type"] = df["body_raw"].map(map_body_type)
     parts = df["type_raw"].map(TYPE_MAP)
     df["transmission"] = parts.map(lambda p: p[0] if isinstance(p, tuple) else None)
@@ -232,12 +232,12 @@ def clean_shreyrmishra(raw: pd.DataFrame) -> pd.DataFrame:
     for column in ["fuel", "body_type", "transmission"]:
         missing = int(df[column].isna().sum())
         if missing:
-            logger.warning("shreyrmishra rows with unknown %s: %d", column, missing)
+            logger.warning("specs rows with unknown %s: %d", column, missing)
 
     key = ["brand", "model", "variant", "fuel", "transmission"]
     dupes = int(df.duplicated(key, keep=False).sum())
     if dupes:
-        logger.warning("shreyrmishra rows sharing the same variant key: %d. Review them.", dupes)
+        logger.warning("specs rows sharing the same variant key: %d. Review them.", dupes)
 
     columns = [
         "brand", "model", "variant", "fuel", "transmission", "transmission_subtype",
@@ -253,14 +253,14 @@ def main():
         interim = resolve_path(cfg["paths"]["interim_dir"])
         interim.mkdir(parents=True, exist_ok=True)
 
-        raw_a = pd.read_csv(resolve_path(cfg["sources"]["atharvanilawar"]), low_memory=False)
-        clean_a, rejected_a = clean_atharvanilawar(raw_a, cfg["scope"]["max_price"])
-        clean_a.to_csv(interim / "atharvanilawar_clean.csv", index=False)
-        rejected_a.to_csv(interim / "atharvanilawar_rejected.csv", index=False)
+        raw_a = pd.read_csv(resolve_path(cfg["sources"]["catalog"]), low_memory=False)
+        clean_a, rejected_a = clean_catalog(raw_a, cfg["scope"]["max_price"])
+        clean_a.to_csv(interim / "catalog_clean.csv", index=False)
+        rejected_a.to_csv(interim / "catalog_rejected.csv", index=False)
 
-        raw_s = pd.read_csv(resolve_path(cfg["sources"]["shreyrmishra"]), low_memory=False)
-        clean_s = clean_shreyrmishra(raw_s)
-        clean_s.to_csv(interim / "shreyrmishra_clean.csv", index=False)
+        raw_s = pd.read_csv(resolve_path(cfg["sources"]["specs"]), low_memory=False)
+        clean_s = clean_specs(raw_s)
+        clean_s.to_csv(interim / "specs_clean.csv", index=False)
 
         logger.info("Saved cleaned files and rejects to %s", interim)
     except Exception as exc:
