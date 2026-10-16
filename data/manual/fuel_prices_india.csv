@@ -1,0 +1,21 @@
+Tier,City,State / UT,Petrol Price (₹/Ltr),Diesel Price (₹/Ltr),CNG Price (₹/Kg),as_of_date
+Tier 1,Delhi,Delhi,102.12,95.2,86.98,Oct-26
+Tier 1,Mumbai,Maharashtra,111.21,97.83,89,Oct-26
+Tier 1,Bengaluru,Karnataka,111.68,99.56,98,Oct-26
+Tier 1,Chennai,Tamil Nadu,107.76,99.55,99.5,Oct-26
+Tier 1,Kolkata,West Bengal,113.51,99.82,93.5,Oct-26
+Tier 1,Hyderabad,Telangana,116.15,104.23,112,Oct-26
+Tier 1,Ahmedabad,Gujarat,101.83,92.45,94.02,Oct-26
+Tier 1,Pune,Maharashtra,111.9,96.42,92.5,Oct-26
+Tier 2,Jaipur,Rajasthan,112.66,98.25,95,Oct-26
+Tier 2,Lucknow,Uttar Pradesh,101.86,95.36,96.5,Oct-26
+Tier 2,Chandigarh,Chandigarh,101.54,89.47,92.25,Oct-26
+Tier 2,Indore,Madhya Pradesh,108.58,93.84,93,Oct-26
+Tier 2,Patna,Bihar,114.55,99.45,98.5,Oct-26
+Tier 2,Guwahati,Assam,105.24,91.28,94.8,Oct-26
+Tier 2,Visakhapatnam,Andhra Pradesh,111.48,99.24,102,Oct-26
+Tier 3,Dehradun,Uttarakhand,103.54,94.15,93.5,Oct-26
+Tier 3,Jamshedpur,Jharkhand,101.75,94.52,92,Oct-26
+Tier 3,Raipur,Chhattisgarh,108.06,101.32,92.8,Oct-26
+Tier 3,Vijayawada,Andhra Pradesh,111.72,99.48,104.5,Oct-26
+Tier 3,Udaipur,Rajasthan,113.25,98.78,96,Oct-26
