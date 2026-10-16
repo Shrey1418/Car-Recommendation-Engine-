@@ -1,0 +1,12 @@
+paths:
+  schema_sql: "sql/schema.sql"
+  db_path: "data/processed/cars.db"
+  processed_dir: "data/processed"
+  manual_dir: "data/manual"
+  interim_dir: "data/interim"
+
+scope:
+  max_price: 5000000
+
+sources:
+  atharvanilawar: "data/external/new_cars_atharvanilawar.csv"
