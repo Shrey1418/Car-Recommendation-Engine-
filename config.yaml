@@ -11,5 +11,5 @@ scope:
   max_price: 5000000
 
 sources:
-  atharvanilawar: "data/external/new_cars_atharvanilawar.csv"
-  shreyrmishra: "data/external/new_cars_shreyrmishra.csv"
+  catalog: "data/external/new_cars_catalog.csv"
+  specs: "data/external/new_cars_specs.csv"
