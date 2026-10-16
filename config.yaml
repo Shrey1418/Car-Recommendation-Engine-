@@ -1,9 +1,11 @@
+project:
+  currency: "INR"
+
 paths:
-  schema_sql: "sql/schema.sql"
-  db_path: "data/processed/cars.db"
+  external_dir: "data/external"
+  interim_dir: "data/interim"
   processed_dir: "data/processed"
   manual_dir: "data/manual"
-  interim_dir: "data/interim"
 
 scope:
   max_price: 5000000
