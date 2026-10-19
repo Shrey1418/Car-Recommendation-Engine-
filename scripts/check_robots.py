@@ -10,7 +10,7 @@ from car_recommender.logger import get_logger
 logger = get_logger(__name__)
 
 SITES = {
-    "Tata": "https://cars.tatamotors.com",
+    "Tata": "https://www.tatamotors.com/",
     "Hyundai": "https://www.hyundai.com/in",
     "Kia": "https://www.kia.com/in",
     "Mahindra": "https://auto.mahindra.com",
