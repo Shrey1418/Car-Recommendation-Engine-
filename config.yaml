@@ -15,3 +15,8 @@ sources:
   specs: "data/external/new_cars_specs.csv"
   model_attributes: "data/manual/model_attributes.csv"
   ev_ranges: "data/manual/ev_ranges_with_battery.csv"
+
+scraping:
+  user_agent: "CarRecommenderResearch/0.1 (student project; contact: joboholic007@gmail.com)"
+  request_delay_seconds: 5
+  timeout_seconds: 20
