@@ -13,3 +13,5 @@ scope:
 sources:
   catalog: "data/external/new_cars_catalog.csv"
   specs: "data/external/new_cars_specs.csv"
+  model_attributes: "data/manual/model_attributes.csv"
+  ev_ranges: "data/manual/ev_ranges_with_battery.csv"
