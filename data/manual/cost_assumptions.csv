@@ -1,0 +1,12 @@
+﻿@"
+assumption,value,unit,source,as_of_date
+ownership_years,5,years,project decision,2026-10-19
+annual_km_default,12000,km per year,"assumption: 1,000 km/month, planning baseline not measured usage",2026-10-19
+home_ev_charging_price,6.00,INR per kWh,"CSPDCL Tariff Schedule FY 2026-27 LV-1 Domestic slab 201-400 units; marginal rate for car charging on top of household use; excludes electricity duty and fixed charges; effective 2026-07-01",2026-10-19
+public_fast_charging_price,20,INR per kWh,"Statiq EV charging cost page, DC fast range 15-25, planning midpoint not a station quote; re-check page",2026-10-19
+ev_home_charging_share,0.80,fraction (0 to 1),"assumption: 80% home and 20% public DC fast; assumes regular home charging access",2026-10-19
+insurance_year1,,percent of ex-showroom price,"blank until a full comprehensive quote is found; own-damage 3% of IDV is not enough",
+service_cost_petrol,,INR per km,,
+service_cost_diesel,,INR per km,,
+service_cost_ev,,INR per km,,
+"@ | Set-Content -Path "data\manual\cost_assumptions.csv" -Encoding UTF8
