@@ -105,6 +105,44 @@ def fill_mileage(merged: pd.DataFrame) -> pd.DataFrame:
     return merged
 
 
+def apply_manual_mileage(merged: pd.DataFrame, worklist: pd.DataFrame) -> pd.DataFrame:
+    keys = ["brand", "model", "variant", "fuel", "transmission"]
+    labels = {"official": "manual_official", "aggregator": "manual_aggregator"}
+
+    work = worklist.copy()
+    for column in keys + ["source_type"]:
+        work[column] = work[column].astype("string").str.strip()
+    text = work["claimed_mileage"].astype("string").str.strip()
+    work["claimed_mileage"] = pd.to_numeric(text, errors="coerce")
+    unreadable = text.notna() & (text != "") & work["claimed_mileage"].isna()
+    if unreadable.any():
+        logger.warning("Worklist rows where claimed_mileage is not a number, ignored: %d", int(unreadable.sum()))
+    work["new_source"] = work["source_type"].str.lower().map(labels)
+
+    filled = work[work["claimed_mileage"].notna()]
+    no_label = filled[filled["new_source"].isna()]
+    if len(no_label):
+        logger.warning("Worklist rows with a mileage but no valid source_type, ignored: %d", len(no_label))
+    usable = filled[filled["new_source"].notna()].drop_duplicates(keys)
+
+    unknown = usable.merge(merged[keys].drop_duplicates(), on=keys, how="left", indicator=True)
+    unknown = unknown[unknown["_merge"] == "left_only"]
+    if len(unknown):
+        logger.warning("Worklist rows that match no variant (typo?): %d", len(unknown))
+
+    merged = merged.merge(
+        usable[keys + ["claimed_mileage", "new_source"]].rename(columns={"claimed_mileage": "manual_mileage"}),
+        on=keys,
+        how="left",
+    )
+    can_apply = (merged["mileage_source"] == "missing") & merged["manual_mileage"].notna()
+    merged.loc[can_apply, "claimed_mileage"] = merged.loc[can_apply, "manual_mileage"]
+    merged.loc[can_apply, "mileage_source"] = merged.loc[can_apply, "new_source"]
+    logger.info("Manual mileage applied: %d", int(can_apply.sum()))
+    logger.info("Mileage sources now: %s", merged["mileage_source"].value_counts().to_dict())
+    return merged.drop(columns=["manual_mileage", "new_source"])
+
+
 def parse_span(text) -> tuple:
     numbers = [float(n) for n in re.findall(r"\d+(?:\.\d+)?", str(text))]
     if not numbers:
@@ -151,6 +189,12 @@ def main():
         merged = attach_specs(catalog, specs)
         merged = attach_model_attributes(merged, attributes)
         merged = fill_mileage(merged)
+        worklist_path = resolve_path(cfg["sources"]["mileage_worklist"])
+        if worklist_path.exists():
+            worklist = pd.read_csv(worklist_path, encoding="utf-8-sig")
+            merged = apply_manual_mileage(merged, worklist)
+        else:
+            logger.warning("No mileage worklist found at %s", worklist_path)
         merged = attach_ev_ranges(merged, ev)
 
         columns = [
