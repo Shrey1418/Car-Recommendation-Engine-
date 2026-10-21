@@ -1,202 +1,202 @@
-﻿"brand","model","body_type","seats","match_type","matched_specs_model","match_score","suggested_body_type","suggested_seats"
-"Audi","A4","Sedan","5","exact","A4","100","",""
-"Audi","Q2","SUV","5","none","","","",""
-"Audi","Q3","SUV","5","exact","Q3","100","",""
-"BMW","1 Series","Hatchback","5","none","","","",""
-"BMW","2 Series Gran Coupe","Sedan","5","none","","","",""
-"BMW","X1 Lwb","SUV","5","none","","","",""
-"BYD","Atto 3","SUV","5","none","","","",""
-"BYD","Emax 7","MPV","7","none","","","",""
-"BYD","Seal","Sedan","5","none","","","",""
-"BYD","Sealion 7","SUV","5","none","","","",""
-"Citroen","Aircross","SUV","5","none","","","",""
-"Citroen","Aircross X","SUV","5","none","","","",""
-"Citroen","Basalt X","SUV","5","none","","","",""
-"Citroen","C3 X","SUV","5","none","","","",""
-"Citroen","C5 Aircross","SUV","5","none","","","",""
-"Citroen","EC3 X","Hatchback","5","none","","","",""
-"Force Motors","Gurkha","SUV","5","exact","Gurkha","100","",""
-"Force Motors","Trax Cruiser","MPV","10","none","","","",""
-"Ford","Aspire","Sedan","5","exact","Aspire","100","",""
-"Ford","Ecosport","SUV","5","exact","Ecosport","100","",""
-"Ford","Endeavour","SUV","7","exact","Endeavour","100","",""
-"Ford","Figo","Hatchback","5","exact","Figo","100","",""
-"Ford","Freestyle","Hatchback","5","exact","Freestyle","100","",""
-"Ford","Ikon","Sedan","5","none","","","",""
-"Honda","Amaze","Sedan","5","exact","Amaze","100","",""
-"Honda","Br V","SUV","7","exact","Brv","100","",""
-"Honda","Brio","Hatchback","5","none","","","",""
-"Honda","City","Sedan","5","exact","City","100","",""
-"Honda","Civic","Sedan","5","exact","Civic","100","",""
-"Honda","Cr V","SUV","7","exact","Cr-V","100","",""
-"Honda","Elevate","SUV","5","none","","","",""
-"Honda","Elevate Facelift","SUV","5","none","","","",""
-"Honda","Jazz","Hatchback","5","exact","Jazz","100","",""
-"Honda","Mobilio","MPV","7","none","","","",""
-"Honda","Zr V","SUV","5","none","","","",""
-"Hyundai","Accent","Sedan","5","none","","","",""
-"Hyundai","Alcazar","SUV","7","none","","","",""
-"Hyundai","Aura","Sedan","5","exact","Aura","100","",""
-"Hyundai","Bayon","SUV","5","none","","","",""
-"Hyundai","Creta","SUV","5","exact","Creta","100","",""
-"Hyundai","Creta Electric","SUV","5","none","","","",""
-"Hyundai","Creta N Line","SUV","5","none","","","",""
-"Hyundai","Elantra","Sedan","5","exact","Elantra","100","",""
-"Hyundai","Eon","Hatchback","5","none","","","",""
-"Hyundai","Exter","SUV","5","none","","","",""
-"Hyundai","Grand I10","Hatchback","5","exact","Grand I10","100","",""
-"Hyundai","Grand I10 Nios","Hatchback","5","exact","Grand I10 Nios","100","",""
-"Hyundai","I20","Hatchback","5","none","","","",""
-"Hyundai","I20 Active","Hatchback","5","exact","I20 Active","100","",""
-"Hyundai","I20 N Line","Hatchback","5","none","","","",""
-"Hyundai","Santro","Hatchback","5","exact","Santro","100","",""
-"Hyundai","Sonata","Sedan","5","none","","","",""
-"Hyundai","Tucson","SUV","5","exact","Tucson","100","",""
-"Hyundai","Venue","SUV","5","exact","Venue","100","",""
-"Hyundai","Venue N Line","SUV","5","none","","","",""
-"Hyundai","Verna","Sedan","5","exact","Verna","100","",""
-"Hyundai","Xcent","Sedan","5","exact","Xcent","100","",""
-"Isuzu","Hi Lander","Pickup","5","none","","","",""
-"Isuzu","V Cross","Pickup","5","none","","","",""
-"Jeep","Compass","SUV","5","exact","Compass","100","",""
-"Jeep","Meridian","SUV","7","none","","","",""
-"Kia","Carens","MPV","7","none","","","",""
-"Kia","Carens Clavis","MPV","7","none","","","",""
-"Kia","Carens Clavis Ev","MPV","7","none","","","",""
-"Kia","Seltos","SUV","5","exact","Seltos","100","",""
-"Kia","Sonet","SUV","5","none","","","",""
-"Kia","Sorento","SUV","7","none","","","",""
-"Kia","Syros","SUV","5","none","","","",""
-"Kia","Syros Ev","SUV","5","none","","","",""
-"MG","Astor","SUV","5","none","","","",""
-"MG","Comet Ev","Hatchback","4","none","","","",""
-"MG","Gloster","SUV","7","none","","","",""
-"MG","Hector","SUV","5","exact","Hector","100","",""
-"MG","Hector Plus","SUV","7","none","","","",""
-"MG","Hector Tomahawk","SUV","5","none","","","",""
-"MG","Hector Tomahawk Ev","SUV","5","none","","","",""
-"MG","Majestor","SUV","7","none","","","",""
-"MG","Windsor Ev","SUV","5","none","","","",""
-"MG","Zs Ev","SUV","5","exact","Zs Ev","100","",""
-"Mahindra","Alturas G4","SUV","7","exact","Alturas G4","100","",""
-"Mahindra","Armada","SUV","7","none","","","",""
-"Mahindra","Be 6 Sporteq","SUV","5","none","","","",""
-"Mahindra","Bolero","SUV","7","exact","Bolero","100","",""
-"Mahindra","Bolero Neo","SUV","7","none","","","",""
-"Mahindra","Bolero Neo Plus","SUV","9","none","","","",""
-"Mahindra","Jeep","SUV","6","none","","","",""
-"Mahindra","KUV100 Nxt","Hatchback","6","exact","Kuv100 Nxt","100","",""
-"Mahindra","Marazzo","MPV","7","exact","Marazzo","100","",""
-"Mahindra","Marshal","SUV","7","none","","","",""
-"Mahindra","Nuvosport","SUV","7","exact","Nuvosport","100","",""
-"Mahindra","Scorpio","SUV","9","exact","Scorpio","100","",""
-"Mahindra","Scorpio N","SUV","7","fuzzy","Scorpio","93.3","SUV","9"
-"Mahindra","Scorpio N Facelift","SUV","7","none","","","",""
-"Mahindra","TUV300","SUV","7","exact","Tuv300","100","",""
-"Mahindra","Thar","SUV","4","exact","Thar","100","",""
-"Mahindra","Thar Og","SUV","4","none","","","",""
-"Mahindra","Thar Roxx","SUV","5","none","","","",""
-"Mahindra","XUV300 Turbosport","SUV","5","none","","","",""
-"Mahindra","XUV400","SUV","5","none","","","",""
-"Mahindra","XUV500","SUV","7","exact","Xuv500","100","",""
-"Mahindra","Xev 9E","SUV","5","none","","","",""
-"Mahindra","Xev 9S","SUV","7","none","","","",""
-"Mahindra","Xuv 3XO","SUV","5","none","","","",""
-"Mahindra","Xuv 3XO Ev","SUV","5","none","","","",""
-"Mahindra","Xuv 7XO","SUV","7","none","","","",""
-"Mahindra","Xylo","SUV","7","exact","Xylo","100","",""
-"Maruti Suzuki","Alto K10","Hatchback","5","exact","Alto K10","100","",""
-"Maruti Suzuki","Baleno","Hatchback","5","exact","Baleno","100","",""
-"Maruti Suzuki","Brezza","SUV","5","none","","","",""
-"Maruti Suzuki","Celerio","Hatchback","5","exact","Celerio","100","",""
-"Maruti Suzuki","Dzire","Sedan","5","exact","Dzire","100","",""
-"Maruti Suzuki","E Vitara","SUV","5","none","","","",""
-"Maruti Suzuki","Eeco","MPV","5","exact","Eeco","100","",""
-"Maruti Suzuki","Ertiga","MPV","7","exact","Ertiga","100","",""
-"Maruti Suzuki","Fronx","SUV","5","none","","","",""
-"Maruti Suzuki","Grand Vitara","SUV","5","none","","","",""
-"Maruti Suzuki","Invicto","MPV","7","none","","","",""
-"Maruti Suzuki","Jimny","SUV","4","none","","","",""
-"Maruti Suzuki","S Presso","Hatchback","5","exact","S-Presso","100","",""
-"Maruti Suzuki","Swift","Hatchback","5","exact","Swift","100","",""
-"Maruti Suzuki","Victoris","SUV","5","none","","","",""
-"Maruti Suzuki","Wagon R","Hatchback","5","exact","Wagon R","100","",""
-"Maruti Suzuki","XL6","MPV","6","exact","Xl6","100","",""
-"Mercedes-Benz","B Class","Hatchback","5","none","","","",""
-"Mercedes-Benz","W123","Sedan","5","none","","","",""
-"Mini","Cooper","Hatchback","4","none","","","",""
-"Mini","Countryman C","SUV","5","fuzzy","Countryman","95.2","Hatchback","5"
-"Mitsubishi","Pajerosport","SUV","7","exact","Pajero Sport","100","",""
-"Nissan","Gravite","MPV","7","none","","","",""
-"Nissan","Kicks","SUV","5","exact","Kicks","100","",""
-"Nissan","Magnite","SUV","5","none","","","",""
-"Nissan","Sunny","Sedan","5","exact","Sunny","100","",""
-"Nissan","Tekton","SUV","5","none","","","",""
-"Nissan","Terrano","SUV","5","exact","Terrano","100","",""
-"Nissan","X Trail","SUV","7","none","","","",""
-"Renault","Captur","SUV","5","exact","Captur","100","",""
-"Renault","Duster","SUV","5","exact","Duster","100","",""
-"Renault","Kiger","SUV","5","none","","","",""
-"Renault","Kwid","Hatchback","5","exact","Kwid","100","",""
-"Renault","Lodgy","MPV","8","exact","Lodgy","100","",""
-"Renault","Triber","MPV","7","exact","Triber","100","",""
-"Skoda","Fabia Scout","Hatchback","5","none","","","",""
-"Skoda","Kodiaq","SUV","5","exact","Kodiaq","100","",""
-"Skoda","Kushaq","SUV","5","none","","","",""
-"Skoda","Kylaq","SUV","5","none","","","",""
-"Skoda","Laura","Sedan","5","none","","","",""
-"Skoda","Rapid Tsi","Sedan","5","none","","","",""
-"Skoda","Slavia","Sedan","5","none","","","",""
-"Skoda","Slavia Facelift","Sedan","5","none","","","",""
-"Skoda","Yeti","SUV","5","none","","","",""
-"Tata","Aeris","SUV","5","none","","","",""
-"Tata","Altroz","Hatchback","5","exact","Altroz","100","",""
-"Tata","Bolt","Hatchback","5","exact","Bolt","100","",""
-"Tata","Curvv","SUV","5","none","","","",""
-"Tata","Curvv Ev","SUV","5","none","","","",""
-"Tata","Harrier","SUV","5","exact","Harrier","100","",""
-"Tata","Harrier Ev","SUV","5","none","","","",""
-"Tata","Hexa","SUV","7","exact","Hexa","100","",""
-"Tata","Movus","SUV","7","none","","","",""
-"Tata","Nexon","SUV","5","exact","Nexon","100","",""
-"Tata","Nexon Ev","SUV","5","exact","Nexon Ev","100","",""
-"Tata","Nexon Ev Prime","SUV","5","none","","","",""
-"Tata","Punch","SUV","5","none","","","",""
-"Tata","Punch Ev","SUV","5","none","","","",""
-"Tata","Safari","SUV","7","none","","","",""
-"Tata","Sierra","SUV","5","none","","","",""
-"Tata","Sierra Ev","SUV","5","none","","","",""
-"Tata","Sumo Gold","SUV","7","none","","","",""
-"Tata","Tiago","Hatchback","5","exact","Tiago","100","",""
-"Tata","Tiago Ev","Hatchback","5","none","","","",""
-"Tata","Tiago Nrg","SUV","5","exact","Tiago Nrg","100","",""
-"Tata","Tigor Ev","Sedan","5","exact","Tigor Ev","100","",""
-"Tata","Venture","MPV","7","none","","","",""
-"Tata","Vistatech","Hatchback","5","none","","","",""
-"Tata","Xenonxt","Pickup","5","none","","","",""
-"Tata","Zest","Sedan","5","exact","Zest","100","",""
-"Toyota","Camry","Sedan","5","exact","Camry","100","",""
-"Toyota","Corolla Altis","Sedan","5","exact","Corolla Altis","100","",""
-"Toyota","Etios Liva","Hatchback","5","exact","Etios Liva","100","",""
-"Toyota","Glanza","Hatchback","5","exact","Glanza","100","",""
-"Toyota","Hilux","Pickup","5","none","","","",""
-"Toyota","Hyryder","SUV","5","none","","","",""
-"Toyota","Innova Crysta","MPV","7","exact","Innova Crysta","100","",""
-"Toyota","Innova Hycross","MPV","7","none","","","",""
-"Toyota","Platinum Etios","Sedan","5","exact","Platinum Etios","100","",""
-"Toyota","Rumion","MPV","7","none","","","",""
-"Toyota","Taisor","SUV","5","none","","","",""
-"Toyota","Urban Cruiser","SUV","5","none","","","",""
-"Toyota","Urban Cruiser Ebella","SUV","5","none","","","",""
-"Toyota","Yaris","Sedan","5","exact","Yaris","100","",""
-"Volkswagen","Ameo","Sedan","5","exact","Ameo","100","",""
-"Volkswagen","Jetta","Sedan","5","none","","","",""
-"Volkswagen","Passat","Sedan","5","exact","Passat","100","",""
-"Volkswagen","Polo","Hatchback","5","exact","Polo","100","",""
-"Volkswagen","Taigun","SUV","5","none","","","",""
-"Volkswagen","Tayron","SUV","7","none","","","",""
-"Volkswagen","Tiguan","SUV","5","exact","Tiguan","100","",""
-"Volkswagen","Tiguan R Line","SUV","5","none","","","",""
-"Volkswagen","Vento","Sedan","5","exact","Vento","100","",""
-"Volkswagen","Virtus","Sedan","5","none","","","",""
-"Volvo","EX30","SUV","5","none","","","",""
+brand,model,body_type,seats,match_type,matched_specs_model,match_score,suggested_body_type,suggested_seats,on_sale
+Audi,A4,Sedan,5,exact,A4,100,,,Y
+Audi,Q2,SUV,5,none,,,,,N
+Audi,Q3,SUV,5,exact,Q3,100,,,Y
+BMW,1 Series,Hatchback,5,none,,,,,N
+BMW,2 Series Gran Coupe,Sedan,5,none,,,,,Y
+BMW,X1 Lwb,SUV,5,none,,,,,Y
+BYD,Atto 3,SUV,5,none,,,,,Y
+BYD,Emax 7,MPV,7,none,,,,,Y
+BYD,Seal,Sedan,5,none,,,,,Y
+BYD,Sealion 7,SUV,5,none,,,,,Y
+Citroen,Aircross,SUV,5,none,,,,,Y
+Citroen,Aircross X,SUV,5,none,,,,,Y
+Citroen,Basalt X,SUV,5,none,,,,,Y
+Citroen,C3 X,SUV,5,none,,,,,Y
+Citroen,C5 Aircross,SUV,5,none,,,,,Y
+Citroen,EC3 X,Hatchback,5,none,,,,,Y
+Force Motors,Gurkha,SUV,5,exact,Gurkha,100,,,Y
+Force Motors,Trax Cruiser,MPV,10,none,,,,,Y
+Ford,Aspire,Sedan,5,exact,Aspire,100,,,N
+Ford,Ecosport,SUV,5,exact,Ecosport,100,,,N
+Ford,Endeavour,SUV,7,exact,Endeavour,100,,,N
+Ford,Figo,Hatchback,5,exact,Figo,100,,,N
+Ford,Freestyle,Hatchback,5,exact,Freestyle,100,,,N
+Ford,Ikon,Sedan,5,none,,,,,N
+Honda,Amaze,Sedan,5,exact,Amaze,100,,,Y
+Honda,Br V,SUV,7,exact,Brv,100,,,N
+Honda,Brio,Hatchback,5,none,,,,,N
+Honda,City,Sedan,5,exact,City,100,,,Y
+Honda,Civic,Sedan,5,exact,Civic,100,,,N
+Honda,Cr V,SUV,7,exact,Cr-V,100,,,N
+Honda,Elevate,SUV,5,none,,,,,Y
+Honda,Elevate Facelift,SUV,5,none,,,,,Y
+Honda,Jazz,Hatchback,5,exact,Jazz,100,,,N
+Honda,Mobilio,MPV,7,none,,,,,N
+Honda,Zr V,SUV,5,none,,,,,N
+Hyundai,Accent,Sedan,5,none,,,,,N
+Hyundai,Alcazar,SUV,7,none,,,,,Y
+Hyundai,Aura,Sedan,5,exact,Aura,100,,,Y
+Hyundai,Bayon,SUV,5,none,,,,,N
+Hyundai,Creta,SUV,5,exact,Creta,100,,,Y
+Hyundai,Creta Electric,SUV,5,none,,,,,Y
+Hyundai,Creta N Line,SUV,5,none,,,,,Y
+Hyundai,Elantra,Sedan,5,exact,Elantra,100,,,N
+Hyundai,Eon,Hatchback,5,none,,,,,N
+Hyundai,Exter,SUV,5,none,,,,,Y
+Hyundai,Grand I10,Hatchback,5,exact,Grand I10,100,,,N
+Hyundai,Grand I10 Nios,Hatchback,5,exact,Grand I10 Nios,100,,,Y
+Hyundai,I20,Hatchback,5,none,,,,,Y
+Hyundai,I20 Active,Hatchback,5,exact,I20 Active,100,,,N
+Hyundai,I20 N Line,Hatchback,5,none,,,,,Y
+Hyundai,Santro,Hatchback,5,exact,Santro,100,,,N
+Hyundai,Sonata,Sedan,5,none,,,,,N
+Hyundai,Tucson,SUV,5,exact,Tucson,100,,,Y
+Hyundai,Venue,SUV,5,exact,Venue,100,,,Y
+Hyundai,Venue N Line,SUV,5,none,,,,,Y
+Hyundai,Verna,Sedan,5,exact,Verna,100,,,Y
+Hyundai,Xcent,Sedan,5,exact,Xcent,100,,,N
+Isuzu,Hi Lander,Pickup,5,none,,,,,Y
+Isuzu,V Cross,Pickup,5,none,,,,,Y
+Jeep,Compass,SUV,5,exact,Compass,100,,,Y
+Jeep,Meridian,SUV,7,none,,,,,Y
+Kia,Carens,MPV,7,none,,,,,Y
+Kia,Carens Clavis,MPV,7,none,,,,,Y
+Kia,Carens Clavis Ev,MPV,7,none,,,,,Y
+Kia,Seltos,SUV,5,exact,Seltos,100,,,Y
+Kia,Sonet,SUV,5,none,,,,,Y
+Kia,Sorento,SUV,7,none,,,,,N
+Kia,Syros,SUV,5,none,,,,,Y
+Kia,Syros Ev,SUV,5,none,,,,,Y
+MG,Astor,SUV,5,none,,,,,Y
+MG,Comet Ev,Hatchback,4,none,,,,,Y
+MG,Gloster,SUV,7,none,,,,,Y
+MG,Hector,SUV,5,exact,Hector,100,,,Y
+MG,Hector Plus,SUV,7,none,,,,,Y
+MG,Hector Tomahawk,SUV,5,none,,,,,N
+MG,Hector Tomahawk Ev,SUV,5,none,,,,,N
+MG,Majestor,SUV,7,none,,,,,Y
+MG,Windsor Ev,SUV,5,none,,,,,Y
+MG,Zs Ev,SUV,5,exact,Zs Ev,100,,,Y
+Mahindra,Alturas G4,SUV,7,exact,Alturas G4,100,,,N
+Mahindra,Armada,SUV,7,none,,,,,N
+Mahindra,Be 6 Sporteq,SUV,5,none,,,,,Y
+Mahindra,Bolero,SUV,7,exact,Bolero,100,,,Y
+Mahindra,Bolero Neo,SUV,7,none,,,,,Y
+Mahindra,Bolero Neo Plus,SUV,9,none,,,,,Y
+Mahindra,Jeep,SUV,6,none,,,,,N
+Mahindra,KUV100 Nxt,Hatchback,6,exact,Kuv100 Nxt,100,,,N
+Mahindra,Marazzo,MPV,7,exact,Marazzo,100,,,N
+Mahindra,Marshal,SUV,7,none,,,,,N
+Mahindra,Nuvosport,SUV,7,exact,Nuvosport,100,,,N
+Mahindra,Scorpio,SUV,9,exact,Scorpio,100,,,Y
+Mahindra,Scorpio N,SUV,7,fuzzy,Scorpio,93.3,SUV,9,Y
+Mahindra,Scorpio N Facelift,SUV,7,none,,,,,Y
+Mahindra,TUV300,SUV,7,exact,Tuv300,100,,,N
+Mahindra,Thar,SUV,4,exact,Thar,100,,,Y
+Mahindra,Thar Og,SUV,4,none,,,,,Y
+Mahindra,Thar Roxx,SUV,5,none,,,,,Y
+Mahindra,XUV300 Turbosport,SUV,5,none,,,,,N
+Mahindra,XUV400,SUV,5,none,,,,,Y
+Mahindra,XUV500,SUV,7,exact,Xuv500,100,,,N
+Mahindra,Xev 9E,SUV,5,none,,,,,Y
+Mahindra,Xev 9S,SUV,7,none,,,,,Y
+Mahindra,Xuv 3XO,SUV,5,none,,,,,Y
+Mahindra,Xuv 3XO Ev,SUV,5,none,,,,,Y
+Mahindra,Xuv 7XO,SUV,7,none,,,,,Y
+Mahindra,Xylo,SUV,7,exact,Xylo,100,,,N
+Maruti Suzuki,Alto K10,Hatchback,5,exact,Alto K10,100,,,Y
+Maruti Suzuki,Baleno,Hatchback,5,exact,Baleno,100,,,Y
+Maruti Suzuki,Brezza,SUV,5,none,,,,,Y
+Maruti Suzuki,Celerio,Hatchback,5,exact,Celerio,100,,,Y
+Maruti Suzuki,Dzire,Sedan,5,exact,Dzire,100,,,Y
+Maruti Suzuki,E Vitara,SUV,5,none,,,,,Y
+Maruti Suzuki,Eeco,MPV,5,exact,Eeco,100,,,Y
+Maruti Suzuki,Ertiga,MPV,7,exact,Ertiga,100,,,Y
+Maruti Suzuki,Fronx,SUV,5,none,,,,,Y
+Maruti Suzuki,Grand Vitara,SUV,5,none,,,,,Y
+Maruti Suzuki,Invicto,MPV,7,none,,,,,Y
+Maruti Suzuki,Jimny,SUV,4,none,,,,,Y
+Maruti Suzuki,S Presso,Hatchback,5,exact,S-Presso,100,,,Y
+Maruti Suzuki,Swift,Hatchback,5,exact,Swift,100,,,Y
+Maruti Suzuki,Victoris,SUV,5,none,,,,,Y
+Maruti Suzuki,Wagon R,Hatchback,5,exact,Wagon R,100,,,Y
+Maruti Suzuki,XL6,MPV,6,exact,Xl6,100,,,Y
+Mercedes-Benz,B Class,Hatchback,5,none,,,,,N
+Mercedes-Benz,W123,Sedan,5,none,,,,,N
+Mini,Cooper,Hatchback,4,none,,,,,Y
+Mini,Countryman C,SUV,5,fuzzy,Countryman,95.2,Hatchback,5,Y
+Mitsubishi,Pajerosport,SUV,7,exact,Pajero Sport,100,,,N
+Nissan,Gravite,MPV,7,none,,,,,Y
+Nissan,Kicks,SUV,5,exact,Kicks,100,,,N
+Nissan,Magnite,SUV,5,none,,,,,Y
+Nissan,Sunny,Sedan,5,exact,Sunny,100,,,N
+Nissan,Tekton,SUV,5,none,,,,,Y
+Nissan,Terrano,SUV,5,exact,Terrano,100,,,N
+Nissan,X Trail,SUV,7,none,,,,,N
+Renault,Captur,SUV,5,exact,Captur,100,,,N
+Renault,Duster,SUV,5,exact,Duster,100,,,Y
+Renault,Kiger,SUV,5,none,,,,,Y
+Renault,Kwid,Hatchback,5,exact,Kwid,100,,,Y
+Renault,Lodgy,MPV,8,exact,Lodgy,100,,,N
+Renault,Triber,MPV,7,exact,Triber,100,,,Y
+Skoda,Fabia Scout,Hatchback,5,none,,,,,N
+Skoda,Kodiaq,SUV,5,exact,Kodiaq,100,,,Y
+Skoda,Kushaq,SUV,5,none,,,,,Y
+Skoda,Kylaq,SUV,5,none,,,,,Y
+Skoda,Laura,Sedan,5,none,,,,,N
+Skoda,Rapid Tsi,Sedan,5,none,,,,,N
+Skoda,Slavia,Sedan,5,none,,,,,Y
+Skoda,Slavia Facelift,Sedan,5,none,,,,,Y
+Skoda,Yeti,SUV,5,none,,,,,N
+Tata,Aeris,SUV,5,none,,,,,Y
+Tata,Altroz,Hatchback,5,exact,Altroz,100,,,Y
+Tata,Bolt,Hatchback,5,exact,Bolt,100,,,N
+Tata,Curvv,SUV,5,none,,,,,Y
+Tata,Curvv Ev,SUV,5,none,,,,,Y
+Tata,Harrier,SUV,5,exact,Harrier,100,,,Y
+Tata,Harrier Ev,SUV,5,none,,,,,Y
+Tata,Hexa,SUV,7,exact,Hexa,100,,,N
+Tata,Movus,SUV,7,none,,,,,N
+Tata,Nexon,SUV,5,exact,Nexon,100,,,Y
+Tata,Nexon Ev,SUV,5,exact,Nexon Ev,100,,,Y
+Tata,Nexon Ev Prime,SUV,5,none,,,,,N
+Tata,Punch,SUV,5,none,,,,,Y
+Tata,Punch Ev,SUV,5,none,,,,,Y
+Tata,Safari,SUV,7,none,,,,,Y
+Tata,Sierra,SUV,5,none,,,,,Y
+Tata,Sierra Ev,SUV,5,none,,,,,Y
+Tata,Sumo Gold,SUV,7,none,,,,,N
+Tata,Tiago,Hatchback,5,exact,Tiago,100,,,Y
+Tata,Tiago Ev,Hatchback,5,none,,,,,Y
+Tata,Tiago Nrg,SUV,5,exact,Tiago Nrg,100,,,Y
+Tata,Tigor Ev,Sedan,5,exact,Tigor Ev,100,,,Y
+Tata,Venture,MPV,7,none,,,,,N
+Tata,Vistatech,Hatchback,5,none,,,,,N
+Tata,Xenonxt,Pickup,5,none,,,,,N
+Tata,Zest,Sedan,5,exact,Zest,100,,,N
+Toyota,Camry,Sedan,5,exact,Camry,100,,,Y
+Toyota,Corolla Altis,Sedan,5,exact,Corolla Altis,100,,,N
+Toyota,Etios Liva,Hatchback,5,exact,Etios Liva,100,,,N
+Toyota,Glanza,Hatchback,5,exact,Glanza,100,,,Y
+Toyota,Hilux,Pickup,5,none,,,,,Y
+Toyota,Hyryder,SUV,5,none,,,,,Y
+Toyota,Innova Crysta,MPV,7,exact,Innova Crysta,100,,,Y
+Toyota,Innova Hycross,MPV,7,none,,,,,Y
+Toyota,Platinum Etios,Sedan,5,exact,Platinum Etios,100,,,N
+Toyota,Rumion,MPV,7,none,,,,,Y
+Toyota,Taisor,SUV,5,none,,,,,Y
+Toyota,Urban Cruiser,SUV,5,none,,,,,N
+Toyota,Urban Cruiser Ebella,SUV,5,none,,,,,Y
+Toyota,Yaris,Sedan,5,exact,Yaris,100,,,N
+Volkswagen,Ameo,Sedan,5,exact,Ameo,100,,,N
+Volkswagen,Jetta,Sedan,5,none,,,,,N
+Volkswagen,Passat,Sedan,5,exact,Passat,100,,,N
+Volkswagen,Polo,Hatchback,5,exact,Polo,100,,,N
+Volkswagen,Taigun,SUV,5,none,,,,,Y
+Volkswagen,Tayron,SUV,7,none,,,,,Y
+Volkswagen,Tiguan,SUV,5,exact,Tiguan,100,,,Y
+Volkswagen,Tiguan R Line,SUV,5,none,,,,,Y
+Volkswagen,Vento,Sedan,5,exact,Vento,100,,,N
+Volkswagen,Virtus,Sedan,5,none,,,,,Y
+Volvo,EX30,SUV,5,none,,,,,Y
