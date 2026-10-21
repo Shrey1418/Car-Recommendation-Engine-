@@ -74,14 +74,17 @@ def attach_specs(catalog: pd.DataFrame, specs: pd.DataFrame) -> pd.DataFrame:
 
 
 def attach_model_attributes(merged: pd.DataFrame, attributes: pd.DataFrame) -> pd.DataFrame:
-    attributes = attributes[["brand", "model", "body_type", "seats"]].copy()
+    attributes = attributes[["brand", "model", "body_type", "seats", "on_sale"]].copy()
     attributes["body_type"] = attributes["body_type"].astype("string").str.strip()
     attributes["seats"] = pd.to_numeric(attributes["seats"], errors="coerce")
+    attributes["on_sale"] = ~attributes["on_sale"].astype("string").str.strip().str.upper().eq("N")
     attributes = attributes.drop_duplicates(["brand", "model"])
 
     merged = merged.merge(attributes, on=["brand", "model"], how="left")
+    merged["on_sale"] = merged["on_sale"].fillna(True).astype(bool)
     missing = int((merged["body_type"].isna() | merged["seats"].isna()).sum())
     logger.warning("Variants still missing body type or seats: %d", missing)
+    logger.info("Variants on sale: %d, marked off sale: %d", int(merged["on_sale"].sum()), int((~merged["on_sale"]).sum()))
     return merged
 
 
@@ -200,7 +203,7 @@ def main():
         columns = [
             "brand", "model", "variant", "fuel", "transmission", "transmission_subtype",
             "ex_showroom_price", "engine_cc", "claimed_mileage", "mileage_source",
-            "body_type", "seats", "power_ps", "torque_nm", "cylinders", "fuel_tank_l",
+            "body_type", "seats","on_sale" ,"power_ps", "torque_nm", "cylinders", "fuel_tank_l",
             "length_mm", "width_mm", "height_mm", "spec_source",
             "ev_range_km", "battery_kwh", "ev_range_basis",
         ]
