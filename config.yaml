@@ -21,3 +21,5 @@ scraping:
   user_agent: "CarRecommenderResearch/0.1 (student project; contact: joboholic007@gmail.com)"
   request_delay_seconds: 5
   timeout_seconds: 20
+  cache_hours: 24
+  ncap_results_url: "https://www.globalncap.org/indiaresults"
