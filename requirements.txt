@@ -10,3 +10,4 @@ pandera
 pytest
 ruff
 openpyxl
+pypdf
