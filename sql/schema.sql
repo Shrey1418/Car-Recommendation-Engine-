@@ -14,6 +14,7 @@ CREATE TABLE variants (
     mileage_source       TEXT,
     body_type            TEXT    NOT NULL,
     seats                INTEGER NOT NULL,
+    on_sale              INTEGER NOT NULL CHECK (on_sale IN (0, 1)),
     power_ps             REAL,
     torque_nm            REAL,
     cylinders            REAL,
@@ -30,3 +31,4 @@ CREATE TABLE variants (
 
 CREATE INDEX idx_variants_price ON variants (ex_showroom_price);
 CREATE INDEX idx_variants_body  ON variants (body_type, seats);
+CREATE INDEX idx_variants_sale  ON variants (on_sale);
