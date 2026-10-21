@@ -10,3 +10,4 @@ data/processed/*.db
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+data/manual/mileage_worklist.csv
