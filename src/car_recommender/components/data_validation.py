@@ -24,6 +24,7 @@ def build_schema(max_price: float) -> pa.DataFrameSchema:
             "ex_showroom_price": pa.Column(float, pa.Check.in_range(200_000, max_price)),
             "body_type": pa.Column(str, pa.Check.isin(BODY_TYPES), nullable=False),
             "seats": pa.Column(float, pa.Check.in_range(2, 10), nullable=False),
+            "on_sale": pa.Column(bool, nullable=False),
             "engine_cc": pa.Column(float, pa.Check.in_range(500, 7000), nullable=True),
             "claimed_mileage": pa.Column(float, pa.Check.in_range(5, 45), nullable=True),
             "power_ps": pa.Column(float, pa.Check.in_range(20, 900), nullable=True),
