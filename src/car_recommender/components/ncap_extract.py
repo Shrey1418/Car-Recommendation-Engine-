@@ -11,10 +11,7 @@ from car_recommender.logger import get_logger
 logger = get_logger(__name__)
 
 NUMBER = r"(\d+(?:\.\d+)?)"
-HEADLINE = re.compile(
-    NUMBER + r"\s*max\.?\s*" + NUMBER + r"\s*Adult\s*" + NUMBER + r"\s*max\.?\s*" + NUMBER + r"\s*Child",
-    re.IGNORECASE,
-)
+SCORE = re.compile(NUMBER + r"\s*max\.?\s*" + NUMBER + r"\s*(Adult|Child)", re.IGNORECASE)
 STARS = re.compile(r"All this explain(?:s|ed) the (\d)\s*star result", re.IGNORECASE)
 YEAR = re.compile(r"Year of publication\s*(\d{4})", re.IGNORECASE)
 
@@ -22,7 +19,8 @@ YEAR = re.compile(r"Year of publication\s*(\d{4})", re.IGNORECASE)
 def read_pdf_text(path) -> str:
     reader = PdfReader(str(path))
     pages = [page.extract_text() or "" for page in reader.pages]
-    return " ".join(" ".join(pages).split())
+    text = " ".join(" ".join(pages).split())
+    return re.sub(r"(\d)\s+\.(\d)", r"\1.\2", text)
 
 
 def parse_factsheet(text: str) -> dict:
@@ -30,25 +28,22 @@ def parse_factsheet(text: str) -> dict:
         "adult_score": None, "adult_max": None, "child_score": None, "child_max": None,
         "adult_stars": None, "child_stars": None, "pdf_year": None, "parse_status": "unreadable", "note": "",
     }
-    headline = HEADLINE.search(text)
+    found = {}
+    for score, maximum, label in SCORE.findall(text):
+        found.setdefault(label.lower(), (float(score), float(maximum)))
     stars = STARS.findall(text)
     year = YEAR.search(text)
 
     if year:
         row["pdf_year"] = int(year.group(1))
-    if headline:
-        row["adult_score"], row["adult_max"], row["child_score"], row["child_max"] = (
-            float(value) for value in headline.groups()
-        )
+    if "adult" in found and "child" in found:
+        row["adult_score"], row["adult_max"] = found["adult"]
+        row["child_score"], row["child_max"] = found["child"]
+        row["parse_status"] = "ok"
     if len(stars) == 2:
         row["adult_stars"], row["child_stars"] = int(stars[0]), int(stars[1])
-    elif stars:
-        row["note"] = f"found {len(stars)} star statements, expected 2"
-
-    if headline and len(stars) == 2:
-        row["parse_status"] = "ok"
-    elif headline:
-        row["parse_status"] = "scores_only"
+    elif row["parse_status"] == "ok":
+        row["note"] = f"stars not read (found {len(stars)} star statements)"
     return row
 
 
@@ -84,6 +79,7 @@ def main():
 
         scores = entries.merge(pd.DataFrame(rows), on="pdf_name")
         logger.info("Fact sheets by status: %s", scores["parse_status"].value_counts().to_dict())
+        logger.info("Status by year:\n%s", pd.crosstab(scores["year"], scores["parse_status"]).to_string())
         logger.info(
             "Adult maximum seen: %s",
             scores["adult_max"].value_counts(dropna=False).to_dict(),
