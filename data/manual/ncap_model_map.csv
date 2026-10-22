@@ -1,89 +1,89 @@
-pdf_name,ncap_title,year,adult_max,ncap_brand,ncap_model_text,our_brand,our_model,match_type,suggested_model,note
-MarutiSuzuki-Celerio-factsheet-6airbags-2025.pdf,Maruti Suzuki Celerio (6 airbags),2025,34,Maruti Suzuki,Celerio,Maruti Suzuki,Celerio,exact,,
-MarutiSuzukiCelerio-factsheet-2airbags-2025.pdf,Maruti Suzuki Celerio (2 airbags),2025,34,Maruti Suzuki,Celerio,Maruti Suzuki,Celerio,exact,,
-MarutiSuzuki-Ciaz-factsheet-2025.pdf,Maruti Suzuki Ciaz,2025,34,Maruti Suzuki,Ciaz,,,none,,
-MarutiSuzuki-Victoris-factsheet-2025.pdf,Maruti Suzuki Victoris (*),2025,34,Maruti Suzuki,Vicoris,Maruti Suzuki,Victoris,fuzzy_suggestion,Victoris,
-NissanMagnite-5stars-2025pdf.pdf,Nissan Magnite (*),2025,34,Nissan,Magnite,Nissan,Magnite,exact,,
-NissanMagnite-4stars-2025pdf.pdf,Nissan Magnite (*),2025,34,Nissan,Magnite,Nissan,Magnite,exact,,
-NissanMagnite-2stars-2025.pdf,Nissan Magnite,2025,34,Nissan,Magnite,Nissan,Magnite,exact,,
-MarutiSuzuki-NewDzire-factsheet-2024.pdf,Maruti Suzuki New Dzire (*),2024,34,Maruti Suzuki,New Dzire,Maruti Suzuki,Dzire,exact_after_dropping_new_or_facelift,,
-MarutiSuzuki-OldDzire-factsheet-2024.pdf,Maruti Suzuki Old Dzire,2024,34,Maruti Suzuki,Dzire,,,exact,,
-Tata-Safari-Harrier-fact-sheet-2023.pdf,Tata Safari / Harrier (*),2023,34,Tata,Safari,Tata,Safari,exact,,
-Tata-Safari-Harrier-fact-sheet-2023.pdf,Tata Safari / Harrier (*),2023,34,Tata,Harrier,Tata,Harrier,exact,,
-Mahindra-Bolero-Neo-fact-sheet-2024.pdf,Mahindra Bolero Neo,2024,34,Mahindra,Bolero Neo,Mahindra,Bolero Neo,exact,,
-Honda-Amaze-fact-sheet-2024.pdf,Honda Amaze,2024,34,Honda,Amaze,Honda,Amaze,exact,,
-Kia-Carens-fact-sheet-2024-3-stars.pdf,Kia Carens (*),2024,34,Kia,Carens,Kia,Carens,exact,,
-Kia-Carens-fact-sheet-2024-0-stars.pdf,Kia Carens (*),2024,34,Kia,Carens,Kia,Carens,exact,,
-Citroen-e-C3-fact-sheet-2024.pdf,Citroën ë-C3,2024,34,Citroen,e-C3,Citroen,EC3 X,fuzzy_suggestion,EC3 X,
-Tata-Nexon-fact-sheet-2024-xeag.pdf,Tata Nexon (*),2024,34,Tata,Nexon,Tata,Nexon,exact,,
-Hyundai-Verna-fact-sheet-2023.pdf,Hyundai Verna (*),2023,34,Hyundai,Verna,Hyundai,Verna,exact,,
-VWVirtus-SkodaSlavia-factsheet2023-frch.pdf,Volkswagen Virtus / Škoda Slavia (*),2023,34,Volkswagen,Virtus,Volkswagen,Virtus,exact,,sibling
-VWVirtus-SkodaSlavia-factsheet2023-frch.pdf,Volkswagen Virtus / Škoda Slavia (*),2023,34,Volkswagen,Virtus,Volkswagen,Virtus,exact,,
-VWVirtus-SkodaSlavia-factsheet2023-frch.pdf,Volkswagen Virtus / Škoda Slavia (*),2023,34,Skoda,Slavia,Skoda ,Slavia,none,,
-MarutiSuzuki-Alto-factsheet2023.pdf,Maruti Suzuki Alto K10,2023,34,Maruti Suzuki,Alto K10,Maruti Suzuki,Alto K10,exact,,
-Suzuki-Wagon-R-factsheet2023.pdf,Maruti Suzuki WagonR,2023,34,Maruti Suzuki,WagonR,Maruti Suzuki,Wagon R,exact,,
-MahindraScorpio-N-2022-fact-sheet.pdf,Mahindra Scorpio-N (*),2022,34,Mahindra,Scorpio-N,Mahindra,Scorpio N,exact,,
-MarutiSuzukiSwift-2022-fact-sheet.pdf,Maruti Suzuki Swift,2022,34,Maruti Suzuki,Swift,,,exact,,
-MarutiSuzukiS-Presso-2022-fact-sheet.pdf,Maruti Suzuki S-Presso,2022,34,Maruti Suzuki,S-Presso,Maruti Suzuki,S Presso,exact,,
-MarutiSuzukiIgnis-2022-fact-sheet.pdf,Maruti Suzuki Ignis,2022,34,Maruti Suzuki,Ignis,,,none,,
-VWTaigun-SkodaKushaq-factsheet-n6dp.pdf,Volkswagen Taigun / Skoda Kushaq (*),2022,34,Volkswagen,Taigun,Volkswagen,Taigun,exact,,
-VWTaigun-SkodaKushaq-factsheet-n6dp.pdf,Volkswagen Taigun / Skoda Kushaq (*),2022,34,Skoda ,Kushaq,Skoda ,Kushaq,none,,
-Kia-Carens-2022-fact-sheet.pdf,Kia Carens – 6 Airbags (*),2022,17,Kia,Carens,Kia,Carens,exact,,
-SCfI2022-ToyotaUrbanCruiser-factsheet.pdf,Toyota Urban Cruiser – 2 Airbags,2022,17,Toyota,Urban Cruiser,Toyota,Urban Cruiser,exact,,
-SCfI2022-Hyundaii20-factsheet.pdf,Hyundai i20 – 2 Airbags,2022,17,Hyundai,i20,Hyundai,I20,exact,,
-SCfI2022-HyundaiCreta-factsheet.pdf,Hyundai Creta – 2 Airbags,2022,17,Hyundai,Creta,Hyundai,Creta,exact,,
-HondaCity4thgen-factsheet.pdf,Honda City (4th Gen) – 2 Airbags,2022,17,Honda,City,,,exact,,
-HondaJazz-factsheet.pdf,Honda Jazz – 2 Airbags,2022,17,Honda,Jazz,Honda,Jazz,exact,,
-NissanMagnite-factsheet-zp9h.pdf,Nissan Magnite – 2 Airbags,2022,17,Nissan,Magnite,Nissan,Magnite,exact,,
-RenaultKiger-factsheet.pdf,Renault Kiger – 2 Airbags,2022,17,Renault,Kiger,Renault,Kiger,exact,,
-SaferCarsForIndia-Mahindra-XUV700-2021-fact-sheet.pdf,Mahindra XUV700 (*) – 2 Airbags,2021,17,Mahindra,XUV7XO,Mahindra,Xuv 7XO,none,,
-SaferCarsForIndia-Tata-Punch-2021.pdf,Tata Punch (*) – 2 Airbags,2021,17,Tata,Punch,Tata,Punch,exact,,
-SaferCarsForIndia-Tigor-2021-fact-sheet.pdf,Tata Tigor EV (*) – 2 Airbags,2021,17,Tata,Tigor EV,Tata,Tigor Ev,exact,,
-SaferCarsForIndia-Triber-fact-sheet.pdf,Renault Triber (*) – 2 Airbags,2021,17,Renault,Triber,Renault,Triber,exact,,
-SaferCarsForIndia-Thar-factsheet-fw3m.pdf,Mahindra Thar (*) – 2 Airbags,2020,17,Mahindra,Thar,Mahindra,Thar,exact,,
-SaferCarsForIndia-S-Presso-factsheet.pdf,Maruti Suzuki S-Presso – Driver Airbag,2020,17,Maruti Suzuki,S-Presso,Maruti Suzuki,S Presso,exact,,
-SaferCarsForIndia-i10-factsheet.pdf,Hyundai Grand i10 Nios – 2 Airbags,2020,17,Hyundai,Grand i10 Nios,Hyundai,Grand I10 Nios,exact,,
-SaferCarsForIndia-Seltos-factsheet.pdf,Kia Seltos – 2 Airbags,2020,17,Kia,Seltos,,,exact,,
-SaferCarsForIndiaTatTig.pdf,Tata Tigor/Tiago (*) – 2 Airbags,2020,17,Tata,Tigor,,,none,,
-SaferCarsForIndiaTatTig.pdf,Tata Tigor/Tiago (*) – 2 Airbags,2020,17,Tata,Tigor,,,none,,sibling
-SaferCarsForIndiaTatTig.pdf,Tata Tigor/Tiago (*) – 2 Airbags,2020,17,Tata,Tigor,,,none,,sibling
-SaferCarsForIndiaTatTig.pdf,Tata Tigor/Tiago (*) – 2 Airbags,2020,17,Tata,Tiago,Tata,Tiago,none,,
-SaferCarsForIndia-Mah300.pdf,Mahindra XUV300 (*) – 2 Airbags,2020,17,Mahindra,XUV300,Mahindra,Xuv 3XO,none,,
-SaferCarsForIndia-Mah300.pdf,Mahindra XUV300 (*) – 2 Airbags,2020,17,Mahindra,XUV300,Mahindra,Xuv 3XO,none,,sibling
-SaferCarsForIndia-Mah300.pdf,Mahindra XUV300 (*) – 2 Airbags,2020,17,Mahindra,XUV300,Mahindra,Xuv 3XO,none,,sibling
-TataAltroz.pdf,Tata Altroz (*) – 2 Airbags,2020,17,Tata,Altroz,Tata,Altroz,exact,,
-Maruti-Suzuki-ERTIGA.pdf,Maruti Suzuki Ertiga – 2 Airbags,2019,17,Maruti Suzuki,Ertiga,Maruti Suzuki,Ertiga,exact,,
-Maruti-Suzuki-WAGONR.pdf,Maruti Suzuki WagonR – Driver Airbag,2019,17,Maruti Suzuki,WagonR,Maruti Suzuki,Wagon R,exact,,
-HyundaiSANTRO.pdf,Hyundai Santro – Driver Airbag,2019,17,Hyundai,Santro,Hyundai,Santro,exact,,
-DatsunREDIGO.pdf,Datsun Redigo – Driver Airbag,2019,17,,Datsun Redigo,,,none,,
-SaferCarsForIndia-Tata-Nexon.pdf,Tata Nexon (*) – 2 Airbags,2018,17,Tata,Nexon,Tata,Nexon,exact,,
-SaferCarsForIndia-Mahindra-Marazzo.pdf,Mahindra Marazzo (*) – 2 Airbags,2018,17,Mahindra,Marazzo,Mahindra,Marazzo,exact,,
-Maruti-Suzuki-Swift.pdf,Maruti Suzuki Swift – 2 Airbags,2018,17,Maruti Suzuki,Swift,,,exact,,
-Maruti-Suzuki-Vitara.pdf,Maruti Suzuki Vitara Brezza – 2 Airbags,2018,17,Maruti Suzuki,Vitara Brezza,,,none,,
-Renault-Lodgy.pdf,Renault Lodgy – No Airbags,2018,17,Renault,Lodgy,Renault,Lodgy,exact,,
-2018-tatanexon-2Airbags.pdf,Tata Nexon (*) – 2 Airbags,2018,17,Tata,Nexon,Tata,Nexon,exact,,
-Renault-Duster-NO-Airbags.pdf,Renault Duster – No Airbags,2017,17,Renault,Duster,,,exact,,
-Renault-Duster-DRIVER-Airbag.pdf,Renault Duster (*) – Driver Airbag,2017,17,Renault,Duster,,,exact,,
-Chevrolet-Enjoy-NO-Airbags.pdf,Chevrolet Enjoy – No Airbags,2017,17,,Chevrolet Enjoy,,,none,,
-Ford-Aspire-Next-Gen-Figo-2-Airbags.pdf,Ford Aspire (Next Gen Figo) – 2 Airbags,2017,17,Ford,Aspire,Ford,Aspire,exact,,
-Tata-Zest-2-Airbags.pdf,Tata Zest (*) – 2 Airbags,2016,17,Tata,Zest,Tata,Zest,exact,,
-Tata-Zest-NO-Airbags.pdf,Tata Zest – No Airbags,2016,17,Tata,Zest,Tata,Zest,exact,,
-Renault-Kwid-IV-Driver-Airbag.pdf,Renault Kwid (IV) (*) – Driver Airbag,2016,17,Renault,Kwid,,,exact,,
-Honda-Mobilio-NO-Airbags.pdf,Honda Mobilio – No Airbags,2016,17,Honda,Mobilio,Honda,Mobilio,exact,,
-Honda-Mobilio-2-Airbags.pdf,Honda Mobilio (*) – 2 Airbags,2016,17,Honda,Mobilio,Honda,Mobilio,exact,,
-Hyundai-Eon-NO-Airbags.pdf,Hyundai Eon – No Airbags,2016,17,Hyundai,Eon,Hyundai,Eon,exact,,
-Maruti-Suzuki-Eeco-NO-Airbags.pdf,Maruti Suzuki Eeco – No Airbags,2016,17,Maruti Suzuki,Eeco,,,exact,,
-Maruti-Suzuki-Celerio-NO-Airbags.pdf,Maruti Suzuki Celerio – No Airbags,2016,17,Maruti Suzuki,Celerio,Maruti Suzuki,Celerio,exact,,
-Mahindra-Scorpio-NO-Airbags.pdf,Mahindra Scorpio – No Airbags,2016,17,Mahindra,Scorpio,,,exact,,
-Renault-Kwid-I-NO-Airbag.pdf,Renault Kwid (I) – No Airbags,2016,17,Renault,Kwid,,,exact,,
-Renault-Kwid-III-NO-Airbag.pdf,Renault Kwid (III) (*) – No Airbags,2016,17,Renault,Kwid,,,exact,,
-Renault-Kwid-III-Driver-Airbag.pdf,Renault Kwid (III) (*) – Driver Airbag,2016,17,Renault,Kwid,,,exact,,
-Toyota-Etios-2-Airbags.pdf,Toyota Etios (*) – 2 Airbags,2016,16,Toyota,Etios,,,none,,
-Datsun-Go-NO-Airbags.pdf,Datsun Go – No Airbags,2014,17,,Datsun Go,,,none,,
-Maruti-Suzuki-SWIFT-NO-Airbags.pdf,Maruti Suzuki Swift – No Airbags,2014,17,Maruti Suzuki,Swift,,,exact,,
-Ford-Figo-NOAirbags.pdf,Ford Figo – No Airbags,2014,17,Ford,Figo,Ford,Figo,exact,,
-Hyundai-i10-NO-Airbags.pdf,Hyundai i10 – No Airbags,2014,17,Hyundai,i10,,,none,,
-VW-Polo-noairbags.pdf,Volkswagen Polo – No Airbags,2014,17,,VW Polo,,,none,,
-Maruti-Suzuki-Alto-NOAirbags.pdf,Maruti Suzuki Alto – No Airbags,2014,17,Maruti Suzuki,Alto 800,,,none,,
-Tata-Nano-NO-Airbags.pdf,Tata Nano – No Airbags,2014,17,Tata,Nano,,,none,,
-VW-Polo-2-airbags.pdf,Volkswagen Polo (*) – 2 Airbags,2014,17,,VW Polo,,,none,,
+﻿"pdf_name","ncap_title","year","adult_max","ncap_brand","ncap_model_text","our_brand","our_model","match_type","suggested_model","note"
+"MarutiSuzuki-Celerio-factsheet-6airbags-2025.pdf","Maruti Suzuki Celerio (6 airbags)","2025","34","Maruti Suzuki","Celerio","Maruti Suzuki","Celerio","exact","",""
+"MarutiSuzukiCelerio-factsheet-2airbags-2025.pdf","Maruti Suzuki Celerio (2 airbags)","2025","34","Maruti Suzuki","Celerio","Maruti Suzuki","Celerio","exact","",""
+"MarutiSuzuki-Ciaz-factsheet-2025.pdf","Maruti Suzuki Ciaz","2025","34","Maruti Suzuki","Ciaz","","","none","",""
+"MarutiSuzuki-Victoris-factsheet-2025.pdf","Maruti Suzuki Victoris (*)","2025","34","Maruti Suzuki","Vicoris","Maruti Suzuki","Victoris","fuzzy_suggestion","Victoris",""
+"NissanMagnite-5stars-2025pdf.pdf","Nissan Magnite (*)","2025","34","Nissan","Magnite","Nissan","Magnite","exact","",""
+"NissanMagnite-4stars-2025pdf.pdf","Nissan Magnite (*)","2025","34","Nissan","Magnite","Nissan","Magnite","exact","",""
+"NissanMagnite-2stars-2025.pdf","Nissan Magnite","2025","34","Nissan","Magnite","Nissan","Magnite","exact","",""
+"MarutiSuzuki-NewDzire-factsheet-2024.pdf","Maruti Suzuki New Dzire (*)","2024","34","Maruti Suzuki","New Dzire","Maruti Suzuki","Dzire","exact_after_dropping_new_or_facelift","",""
+"MarutiSuzuki-OldDzire-factsheet-2024.pdf","Maruti Suzuki Old Dzire","2024","34","Maruti Suzuki","Dzire","","","exact","",""
+"Tata-Safari-Harrier-fact-sheet-2023.pdf","Tata Safari / Harrier (*)","2023","34","Tata","Safari","Tata","Safari","exact","",""
+"Tata-Safari-Harrier-fact-sheet-2023.pdf","Tata Safari / Harrier (*)","2023","34","Tata","Harrier","Tata","Harrier","exact","",""
+"Mahindra-Bolero-Neo-fact-sheet-2024.pdf","Mahindra Bolero Neo","2024","34","Mahindra","Bolero Neo","Mahindra","Bolero Neo","exact","",""
+"Honda-Amaze-fact-sheet-2024.pdf","Honda Amaze","2024","34","Honda","Amaze","Honda","Amaze","exact","",""
+"Kia-Carens-fact-sheet-2024-3-stars.pdf","Kia Carens (*)","2024","34","Kia","Carens","Kia","Carens","exact","",""
+"Kia-Carens-fact-sheet-2024-0-stars.pdf","Kia Carens (*)","2024","34","Kia","Carens","Kia","Carens","exact","",""
+"Citroen-e-C3-fact-sheet-2024.pdf","Citroën ë-C3","2024","34","Citroen","e-C3","Citroen","EC3 X","fuzzy_suggestion","EC3 X",""
+"Tata-Nexon-fact-sheet-2024-xeag.pdf","Tata Nexon (*)","2024","34","Tata","Nexon","Tata","Nexon","exact","",""
+"Hyundai-Verna-fact-sheet-2023.pdf","Hyundai Verna (*)","2023","34","Hyundai","Verna","Hyundai","Verna","exact","",""
+"VWVirtus-SkodaSlavia-factsheet2023-frch.pdf","Volkswagen Virtus / Škoda Slavia (*)","2023","34","Volkswagen","Virtus","Skoda","Slavia Facelift","exact","","sibling"
+"VWVirtus-SkodaSlavia-factsheet2023-frch.pdf","Volkswagen Virtus / Škoda Slavia (*)","2023","34","Volkswagen","Virtus","Volkswagen","Virtus","exact","",""
+"VWVirtus-SkodaSlavia-factsheet2023-frch.pdf","Volkswagen Virtus / Škoda Slavia (*)","2023","34","Skoda","Slavia","Skoda","Slavia","none","",""
+"MarutiSuzuki-Alto-factsheet2023.pdf","Maruti Suzuki Alto K10","2023","34","Maruti Suzuki","Alto K10","Maruti Suzuki","Alto K10","exact","",""
+"Suzuki-Wagon-R-factsheet2023.pdf","Maruti Suzuki WagonR","2023","34","Maruti Suzuki","WagonR","Maruti Suzuki","Wagon R","exact","",""
+"MahindraScorpio-N-2022-fact-sheet.pdf","Mahindra Scorpio-N (*)","2022","34","Mahindra","Scorpio-N","Mahindra","Scorpio N","exact","",""
+"MarutiSuzukiSwift-2022-fact-sheet.pdf","Maruti Suzuki Swift","2022","34","Maruti Suzuki","Swift","","","exact","",""
+"MarutiSuzukiS-Presso-2022-fact-sheet.pdf","Maruti Suzuki S-Presso","2022","34","Maruti Suzuki","S-Presso","Maruti Suzuki","S Presso","exact","",""
+"MarutiSuzukiIgnis-2022-fact-sheet.pdf","Maruti Suzuki Ignis","2022","34","Maruti Suzuki","Ignis","","","none","",""
+"VWTaigun-SkodaKushaq-factsheet-n6dp.pdf","Volkswagen Taigun / Skoda Kushaq (*)","2022","34","Volkswagen","Taigun","Volkswagen","Taigun","exact","",""
+"VWTaigun-SkodaKushaq-factsheet-n6dp.pdf","Volkswagen Taigun / Skoda Kushaq (*)","2022","34","Skoda ","Kushaq","Skoda","Kushaq","none","",""
+"Kia-Carens-2022-fact-sheet.pdf","Kia Carens – 6 Airbags (*)","2022","17","Kia","Carens","Kia","Carens","exact","",""
+"SCfI2022-ToyotaUrbanCruiser-factsheet.pdf","Toyota Urban Cruiser – 2 Airbags","2022","17","Toyota","Urban Cruiser","Toyota","Urban Cruiser","exact","",""
+"SCfI2022-Hyundaii20-factsheet.pdf","Hyundai i20 – 2 Airbags","2022","17","Hyundai","i20","Hyundai","I20","exact","",""
+"SCfI2022-HyundaiCreta-factsheet.pdf","Hyundai Creta – 2 Airbags","2022","17","Hyundai","Creta","Hyundai","Creta","exact","",""
+"HondaCity4thgen-factsheet.pdf","Honda City (4th Gen) – 2 Airbags","2022","17","Honda","City","","","exact","",""
+"HondaJazz-factsheet.pdf","Honda Jazz – 2 Airbags","2022","17","Honda","Jazz","Honda","Jazz","exact","",""
+"NissanMagnite-factsheet-zp9h.pdf","Nissan Magnite – 2 Airbags","2022","17","Nissan","Magnite","Nissan","Magnite","exact","",""
+"RenaultKiger-factsheet.pdf","Renault Kiger – 2 Airbags","2022","17","Renault","Kiger","Renault","Kiger","exact","",""
+"SaferCarsForIndia-Mahindra-XUV700-2021-fact-sheet.pdf","Mahindra XUV700 (*) – 2 Airbags","2021","17","Mahindra","XUV7XO","Mahindra","Xuv 7XO","none","",""
+"SaferCarsForIndia-Tata-Punch-2021.pdf","Tata Punch (*) – 2 Airbags","2021","17","Tata","Punch","Tata","Punch","exact","",""
+"SaferCarsForIndia-Tigor-2021-fact-sheet.pdf","Tata Tigor EV (*) – 2 Airbags","2021","17","Tata","Tigor EV","Tata","Tigor Ev","exact","",""
+"SaferCarsForIndia-Triber-fact-sheet.pdf","Renault Triber (*) – 2 Airbags","2021","17","Renault","Triber","Renault","Triber","exact","",""
+"SaferCarsForIndia-Thar-factsheet-fw3m.pdf","Mahindra Thar (*) – 2 Airbags","2020","17","Mahindra","Thar","Mahindra","Thar","exact","",""
+"SaferCarsForIndia-S-Presso-factsheet.pdf","Maruti Suzuki S-Presso – Driver Airbag","2020","17","Maruti Suzuki","S-Presso","Maruti Suzuki","S Presso","exact","",""
+"SaferCarsForIndia-i10-factsheet.pdf","Hyundai Grand i10 Nios – 2 Airbags","2020","17","Hyundai","Grand i10 Nios","Hyundai","Grand I10 Nios","exact","",""
+"SaferCarsForIndia-Seltos-factsheet.pdf","Kia Seltos – 2 Airbags","2020","17","Kia","Seltos","","","exact","",""
+"SaferCarsForIndiaTatTig.pdf","Tata Tigor/Tiago (*) – 2 Airbags","2020","17","Tata","Tigor","","","none","",""
+"SaferCarsForIndiaTatTig.pdf","Tata Tigor/Tiago (*) – 2 Airbags","2020","17","Tata","Tigor","Tata","Tiago Ev","none","","sibling"
+"SaferCarsForIndiaTatTig.pdf","Tata Tigor/Tiago (*) – 2 Airbags","2020","17","Tata","Tigor","Tata","Tiago Nrg","none","","sibling"
+"SaferCarsForIndiaTatTig.pdf","Tata Tigor/Tiago (*) – 2 Airbags","2020","17","Tata","Tiago","Tata","Tiago","none","",""
+"SaferCarsForIndia-Mah300.pdf","Mahindra XUV300 (*) – 2 Airbags","2020","17","Mahindra","XUV300","Mahindra","Xuv 3XO","none","",""
+"SaferCarsForIndia-Mah300.pdf","Mahindra XUV300 (*) – 2 Airbags","2020","17","Mahindra","XUV300","Mahindra","Xuv 3XO Ev","none","","sibling"
+"SaferCarsForIndia-Mah300.pdf","Mahindra XUV300 (*) – 2 Airbags","2020","17","Mahindra","XUV300","Mahindra","XUV300 Turbosport","none","","sibling"
+"TataAltroz.pdf","Tata Altroz (*) – 2 Airbags","2020","17","Tata","Altroz","Tata","Altroz","exact","",""
+"Maruti-Suzuki-ERTIGA.pdf","Maruti Suzuki Ertiga – 2 Airbags","2019","17","Maruti Suzuki","Ertiga","Maruti Suzuki","Ertiga","exact","",""
+"Maruti-Suzuki-WAGONR.pdf","Maruti Suzuki WagonR – Driver Airbag","2019","17","Maruti Suzuki","WagonR","Maruti Suzuki","Wagon R","exact","",""
+"HyundaiSANTRO.pdf","Hyundai Santro – Driver Airbag","2019","17","Hyundai","Santro","Hyundai","Santro","exact","",""
+"DatsunREDIGO.pdf","Datsun Redigo – Driver Airbag","2019","17","","Datsun Redigo","","","none","",""
+"SaferCarsForIndia-Tata-Nexon.pdf","Tata Nexon (*) – 2 Airbags","2018","17","Tata","Nexon","Tata","Nexon","exact","",""
+"SaferCarsForIndia-Mahindra-Marazzo.pdf","Mahindra Marazzo (*) – 2 Airbags","2018","17","Mahindra","Marazzo","Mahindra","Marazzo","exact","",""
+"Maruti-Suzuki-Swift.pdf","Maruti Suzuki Swift – 2 Airbags","2018","17","Maruti Suzuki","Swift","","","exact","",""
+"Maruti-Suzuki-Vitara.pdf","Maruti Suzuki Vitara Brezza – 2 Airbags","2018","17","Maruti Suzuki","Vitara Brezza","","","none","",""
+"Renault-Lodgy.pdf","Renault Lodgy – No Airbags","2018","17","Renault","Lodgy","Renault","Lodgy","exact","",""
+"2018-tatanexon-2Airbags.pdf","Tata Nexon (*) – 2 Airbags","2018","17","Tata","Nexon","Tata","Nexon","exact","",""
+"Renault-Duster-NO-Airbags.pdf","Renault Duster – No Airbags","2017","17","Renault","Duster","","","exact","",""
+"Renault-Duster-DRIVER-Airbag.pdf","Renault Duster (*) – Driver Airbag","2017","17","Renault","Duster","","","exact","",""
+"Chevrolet-Enjoy-NO-Airbags.pdf","Chevrolet Enjoy – No Airbags","2017","17","","Chevrolet Enjoy","","","none","",""
+"Ford-Aspire-Next-Gen-Figo-2-Airbags.pdf","Ford Aspire (Next Gen Figo) – 2 Airbags","2017","17","Ford","Aspire","Ford","Aspire","exact","",""
+"Tata-Zest-2-Airbags.pdf","Tata Zest (*) – 2 Airbags","2016","17","Tata","Zest","Tata","Zest","exact","",""
+"Tata-Zest-NO-Airbags.pdf","Tata Zest – No Airbags","2016","17","Tata","Zest","Tata","Zest","exact","",""
+"Renault-Kwid-IV-Driver-Airbag.pdf","Renault Kwid (IV) (*) – Driver Airbag","2016","17","Renault","Kwid","","","exact","",""
+"Honda-Mobilio-NO-Airbags.pdf","Honda Mobilio – No Airbags","2016","17","Honda","Mobilio","Honda","Mobilio","exact","",""
+"Honda-Mobilio-2-Airbags.pdf","Honda Mobilio (*) – 2 Airbags","2016","17","Honda","Mobilio","Honda","Mobilio","exact","",""
+"Hyundai-Eon-NO-Airbags.pdf","Hyundai Eon – No Airbags","2016","17","Hyundai","Eon","Hyundai","Eon","exact","",""
+"Maruti-Suzuki-Eeco-NO-Airbags.pdf","Maruti Suzuki Eeco – No Airbags","2016","17","Maruti Suzuki","Eeco","","","exact","",""
+"Maruti-Suzuki-Celerio-NO-Airbags.pdf","Maruti Suzuki Celerio – No Airbags","2016","17","Maruti Suzuki","Celerio","Maruti Suzuki","Celerio","exact","",""
+"Mahindra-Scorpio-NO-Airbags.pdf","Mahindra Scorpio – No Airbags","2016","17","Mahindra","Scorpio","","","exact","",""
+"Renault-Kwid-I-NO-Airbag.pdf","Renault Kwid (I) – No Airbags","2016","17","Renault","Kwid","","","exact","",""
+"Renault-Kwid-III-NO-Airbag.pdf","Renault Kwid (III) (*) – No Airbags","2016","17","Renault","Kwid","","","exact","",""
+"Renault-Kwid-III-Driver-Airbag.pdf","Renault Kwid (III) (*) – Driver Airbag","2016","17","Renault","Kwid","","","exact","",""
+"Toyota-Etios-2-Airbags.pdf","Toyota Etios (*) – 2 Airbags","2016","16","Toyota","Etios","","","none","",""
+"Datsun-Go-NO-Airbags.pdf","Datsun Go – No Airbags","2014","17","","Datsun Go","","","none","",""
+"Maruti-Suzuki-SWIFT-NO-Airbags.pdf","Maruti Suzuki Swift – No Airbags","2014","17","Maruti Suzuki","Swift","","","exact","",""
+"Ford-Figo-NOAirbags.pdf","Ford Figo – No Airbags","2014","17","Ford","Figo","Ford","Figo","exact","",""
+"Hyundai-i10-NO-Airbags.pdf","Hyundai i10 – No Airbags","2014","17","Hyundai","i10","","","none","",""
+"VW-Polo-noairbags.pdf","Volkswagen Polo – No Airbags","2014","17","","VW Polo","","","none","",""
+"Maruti-Suzuki-Alto-NOAirbags.pdf","Maruti Suzuki Alto – No Airbags","2014","17","Maruti Suzuki","Alto 800","","","none","",""
+"Tata-Nano-NO-Airbags.pdf","Tata Nano – No Airbags","2014","17","Tata","Nano","","","none","",""
+"VW-Polo-2-airbags.pdf","Volkswagen Polo (*) – 2 Airbags","2014","17","","VW Polo","","","none","",""
