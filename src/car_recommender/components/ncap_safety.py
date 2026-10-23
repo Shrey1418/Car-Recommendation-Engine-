@@ -10,53 +10,91 @@ logger = get_logger(__name__)
 
 NEW_PROTOCOL_MIN_ADULT_MAX = 30
 KEYS = ["our_brand", "our_model"]
+SOURCE_RANK = {"Global NCAP": 0, "Bharat NCAP": 1}
+PROTOCOL_LABEL = {"new": "new protocol", "old": "old protocol", "ais197": "AIS 197"}
+TEST_COLUMNS = [
+    "sheet", "source", "protocol", "rating_label", "year",
+    "adult_score", "adult_max", "child_score", "child_max",
+]
 
 
-def load_map(path) -> pd.DataFrame:
+def load_map(path, sheet_column, source) -> pd.DataFrame:
     mapping = pd.read_csv(path, dtype="string").fillna("")
+    if "note" not in mapping.columns:
+        mapping["note"] = ""
     for column in ["our_brand", "our_model", "note"]:
         mapping[column] = mapping[column].str.strip()
     mapping = mapping[(mapping["our_brand"] != "") & (mapping["our_model"] != "")].copy()
     mapping["sibling"] = mapping["note"].str.lower().eq("sibling")
-    mapping = mapping[["pdf_name", "our_brand", "our_model", "sibling"]]
+    mapping["source"] = source
+    mapping = mapping.rename(columns={sheet_column: "sheet"})
+    mapping = mapping[["source", "sheet", "our_brand", "our_model", "sibling"]]
     before = len(mapping)
-    mapping = mapping.drop_duplicates(["pdf_name", "our_brand", "our_model"])
+    mapping = mapping.drop_duplicates(["source", "sheet", "our_brand", "our_model"])
     if len(mapping) < before:
-        logger.warning("Dropped %d duplicate map rows", before - len(mapping))
+        logger.warning("%s map: dropped %d duplicate rows", source, before - len(mapping))
     return mapping.reset_index(drop=True)
 
 
-def add_percentages(scores: pd.DataFrame) -> pd.DataFrame:
-    scores = scores.copy()
-    scores["adult_pct"] = (scores["adult_score"] / scores["adult_max"] * 100).round(1)
-    scores["child_pct"] = (scores["child_score"] / scores["child_max"] * 100).round(1)
+def load_global_tests(interim) -> pd.DataFrame:
+    scores = pd.read_csv(interim / "ncap_scores.csv")
+    scores = scores[scores["parse_status"].eq("ok")].copy()
+    if scores["pdf_name"].duplicated().any():
+        raise ValueError("ncap_scores.csv has duplicate pdf_name values")
+    scores = scores.rename(columns={"pdf_name": "sheet"})
+    scores["source"] = "Global NCAP"
+    scores["rating_label"] = ""
     scores["protocol"] = scores["adult_max"].ge(NEW_PROTOCOL_MIN_ADULT_MAX).map({True: "new", False: "old"})
-    return scores
+    return scores[TEST_COLUMNS]
+
+
+def load_bharat_tests(interim) -> pd.DataFrame:
+    scores = pd.read_csv(interim / "bncap_scores.csv")
+    scores = scores[scores["parse_status"].eq("ok")].copy()
+    if scores["detail_url"].duplicated().any():
+        raise ValueError("bncap_scores.csv has duplicate detail_url values")
+    scores = scores.rename(columns={"detail_url": "sheet", "test_year": "year"})
+    scores["source"] = "Bharat NCAP"
+    scores["rating_label"] = scores["rating_label"].fillna("")
+    scores["protocol"] = "ais197"
+    return scores[TEST_COLUMNS]
+
+
+def add_percentages(tests: pd.DataFrame) -> pd.DataFrame:
+    tests = tests.copy()
+    tests["year"] = tests["year"].astype(int)
+    tests["adult_pct"] = (tests["adult_score"] / tests["adult_max"] * 100).round(1)
+    tests["child_pct"] = (tests["child_score"] / tests["child_max"] * 100).round(1)
+    return tests
 
 
 def pick_latest(joined: pd.DataFrame) -> pd.DataFrame:
     joined = joined.copy()
-    joined["is_new"] = joined["protocol"].eq("new")
+    joined["source_rank"] = joined["source"].map(SOURCE_RANK)
+    joined["is_new"] = joined["protocol"].ne("old")
     ordered = joined.sort_values(
-        KEYS + ["year", "is_new", "adult_pct"],
-        ascending=[True, True, False, False, True],
+        KEYS + ["year", "source_rank", "is_new", "adult_pct"],
+        ascending=[True, True, False, True, False, True],
     )
     chosen = ordered.groupby(KEYS).head(1).copy()
 
-    same = joined.merge(chosen[KEYS + ["year", "protocol"]], on=KEYS + ["year", "protocol"])
+    same_keys = KEYS + ["year", "source", "protocol"]
+    same = joined.merge(chosen[same_keys], on=same_keys)
     stats = (
         same.groupby(KEYS)
-        .agg(sheets_in_latest=("pdf_name", "count"), adult_pct_best=("adult_pct", "max"))
+        .agg(sheets_in_latest=("sheet", "count"), adult_pct_best=("adult_pct", "max"))
         .reset_index()
     )
     chosen = chosen.merge(stats, on=KEYS)
     chosen["multiple_versions"] = chosen["sheets_in_latest"] > 1
+    chosen["select_variants"] = chosen["rating_label"].ne("") & chosen["rating_label"].ne("Base Rating")
     chosen["safety_source"] = (
-        "Global NCAP "
+        chosen["source"]
+        + " "
         + chosen["year"].astype(str)
         + " ("
-        + chosen["protocol"].astype(str)
-        + " protocol)"
+        + chosen["protocol"].map(PROTOCOL_LABEL)
+        + ")"
         + chosen["sibling"].map({True: ", sibling version", False: ""})
     )
     return chosen
@@ -90,35 +128,38 @@ def main():
         manual = resolve_path(cfg["paths"]["manual_dir"])
         processed = resolve_path(cfg["paths"]["processed_dir"])
 
-        scores = pd.read_csv(interim / "ncap_scores.csv")
-        scores = scores[scores["parse_status"].eq("ok")]
-        if scores["pdf_name"].duplicated().any():
-            raise ValueError("ncap_scores.csv has duplicate pdf_name values")
-        scores = add_percentages(
-            scores[["pdf_name", "year", "adult_score", "adult_max", "child_score", "child_max"]]
+        tests = add_percentages(pd.concat([load_global_tests(interim), load_bharat_tests(interim)], ignore_index=True))
+        mapping = pd.concat(
+            [
+                load_map(manual / "ncap_model_map.csv", "pdf_name", "Global NCAP"),
+                load_map(manual / "bncap_model_map.csv", "detail_url", "Bharat NCAP"),
+            ],
+            ignore_index=True,
         )
 
-        mapping = load_map(manual / "ncap_model_map.csv")
-        joined = mapping.merge(scores, on="pdf_name", how="left", validate="many_to_one")
+        joined = mapping.merge(tests, on=["source", "sheet"], how="left", validate="many_to_one")
         missing = joined[joined["adult_pct"].isna()]
         if len(missing):
-            raise ValueError(f"Map rows with no score (pdf_name typo?): {missing['pdf_name'].tolist()}")
+            raise ValueError(f"Map rows with no score (typo in sheet name?): {missing['sheet'].tolist()}")
 
+        both = joined.groupby(KEYS)["source"].nunique().eq(2).sum()
         chosen = pick_latest(joined)
         variants = pd.read_csv(interim / "variants_validated.csv")
         check_against_catalog(chosen, variants)
 
         final = chosen.rename(columns={"our_brand": "brand", "our_model": "model", "year": "test_year"})
         final = final[
-            ["brand", "model", "adult_pct", "child_pct", "protocol", "test_year",
-             "multiple_versions", "adult_pct_best", "sibling", "safety_source", "pdf_name"]
+            ["brand", "model", "adult_pct", "child_pct", "source", "protocol", "test_year",
+             "rating_label", "select_variants", "multiple_versions", "adult_pct_best",
+             "sibling", "safety_source", "sheet"]
         ].sort_values(["brand", "model"])
         out = processed / "safety_ratings.csv"
         final.to_csv(out, index=False)
 
-        logger.info("Models rated: %d, protocol: %s", len(final), final["protocol"].value_counts().to_dict())
-        logger.info("Multiple versions tested: %d, sibling ratings: %d",
-                    final["multiple_versions"].sum(), final["sibling"].sum())
+        logger.info("Models rated: %d, by source: %s", len(final), final["source"].value_counts().to_dict())
+        logger.info("Models tested by both sources: %d", both)
+        logger.info("Multiple versions tested: %d, sibling ratings: %d, select-variants ratings: %d",
+                    final["multiple_versions"].sum(), final["sibling"].sum(), final["select_variants"].sum())
         logger.info("Saved %s", out)
     except Exception as exc:
         raise CustomException(exc, sys) from exc
