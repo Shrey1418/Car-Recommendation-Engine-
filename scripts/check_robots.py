@@ -16,8 +16,7 @@ SITES = {
     "Mahindra": "https://auto.mahindra.com",
     "MG": "https://www.mgmotor.co.in",
     "Toyota": "https://www.toyotabharat.com",
-    "Renault": "https://www.renault.co.in",
-    "Nissan": "https://www.nissan.in",
+    
 }
 
 
