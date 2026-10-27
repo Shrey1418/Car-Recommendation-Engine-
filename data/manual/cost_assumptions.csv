@@ -1,5 +1,4 @@
-﻿@"
-assumption,value,unit,source,as_of_date
+﻿assumption,value,unit,source,as_of_date
 ownership_years,5,years,project decision,2026-10-19
 annual_km_default,12000,km per year,"assumption: 1,000 km/month, planning baseline not measured usage",2026-10-19
 home_ev_charging_price,6.00,INR per kWh,"CSPDCL Tariff Schedule FY 2026-27 LV-1 Domestic slab 201-400 units; marginal rate for car charging on top of household use; excludes electricity duty and fixed charges; effective 2026-07-01",2026-10-19
@@ -9,4 +8,4 @@ insurance_year1,,percent of ex-showroom price,"blank until a full comprehensive 
 service_cost_petrol,,INR per km,,
 service_cost_diesel,,INR per km,,
 service_cost_ev,,INR per km,,
-"@ | Set-Content -Path "data\manual\cost_assumptions.csv" -Encoding UTF8
+fuel_price_growth_pct_per_year,0,percent per year,"project decision: constant fuel prices by default; user can change in the app",2026-10-27
