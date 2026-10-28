@@ -19,3 +19,5 @@ data/manual/mileage_worklist.csv
 data/manual/ncap_ratings.csv
 data/manual/*_backup.csv
 .env
+
+data/manual/cng_variants.csv
