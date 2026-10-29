@@ -18,9 +18,14 @@ from car_recommender.components.scoring import read_safety, recommend  # noqa: E
 from car_recommender.config import load_config, resolve_path  # noqa: E402
 
 PRESET_LABELS = {
-    "Balanced": "balanced",
+    "Balanced (mix of low cost and good safety)": "balanced",
     "Family: safety first": "family_safety",
     "Lowest cost to own, within my range": "budget_saver",
+}
+PRESET_HELP = {
+    "Balanced (mix of low cost and good safety)": "Mix of both: reasonable cost to own and good safety, leaning towards the better car in your price range.",
+    "Family: safety first": "Safety counts the most; cost and running cost matter less.",
+    "Lowest cost to own, within my range": "Cheapest to buy and run inside your price range; safety counts the least.",
 }
 FUELS = ["Petrol", "Diesel", "CNG", "Electric", "Hybrid"]
 GROUP_TITLES = {
@@ -122,6 +127,7 @@ def main() -> None:
     with st.sidebar:
         st.header("Your need")
         preset_label = st.radio("What matters most", list(PRESET_LABELS))
+        st.caption(PRESET_HELP.get(preset_label, ""))
         price_low, price_high = st.slider("Price range, ex-showroom (lakh rupees)", 3.0, 50.0, (8.0, 15.0), 0.5)
         seats = st.selectbox("Minimum seats", [4, 5, 6, 7], index=1)
         fuels = st.multiselect("Fuel types", FUELS, default=FUELS)

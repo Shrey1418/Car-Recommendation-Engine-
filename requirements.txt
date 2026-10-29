@@ -11,3 +11,4 @@ pytest
 ruff
 openpyxl
 pypdf
+streamlit
