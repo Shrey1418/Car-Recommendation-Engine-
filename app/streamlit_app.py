@@ -52,11 +52,12 @@ def load_static():
 
 
 @st.cache_data
-def build_costs(city: str, annual_km: float):
+def build_costs(city: str, annual_km: float, home_charging: bool = True):
     variants, _, assumptions, price_table, families, _, _ = load_static()
     years = int(number(assumptions, "ownership_years"))
     growth = number(assumptions, "fuel_price_growth_pct_per_year")
-    prices = pick_prices(price_table, city, assumptions)
+    overrides = None if home_charging else {"electric": number(assumptions, "public_fast_charging_price")}
+    prices = pick_prices(price_table, city, assumptions, overrides)
     costs = add_running_cost(variants, prices, annual_km, years, growth)
     comparisons = compare_fuels(costs, families, annual_km, years)
     return costs, comparisons, prices
@@ -135,8 +136,9 @@ def main() -> None:
         cities = sorted(price_table["city"].dropna().tolist())
         city = st.selectbox("City (for fuel prices)", cities, index=cities.index("Delhi") if "Delhi" in cities else 0)
         annual_km = st.slider("Distance driven per year (km)", 3000, 30000, 12000, 1000)
+        home_charging = st.checkbox("I can charge an EV at home", value=True)
 
-    costs, comparisons, prices = build_costs(city, float(annual_km))
+    costs, comparisons, prices = build_costs(city, float(annual_km), home_charging)
     st.sidebar.caption(
         f"Fuel prices used: petrol ₹{prices['petrol']:.2f}, diesel ₹{prices['diesel']:.2f}, "
         f"CNG ₹{prices['cng']:.2f} per litre/kg, electricity ₹{prices['electric']:.2f} per kWh"
@@ -157,6 +159,18 @@ def main() -> None:
         st.warning("No car passes these filters. Raise the budget or relax seats, fuel or transmission.")
     else:
         st.write(f"{result['shortlist_size']} variants pass your filters.")
+        if "Diesel" in fuels or not fuels:
+            listed = ", ".join((gaps["brand"] + " " + gaps["model"]).head(8))
+            st.warning(f"Diesel data is incomplete. These diesel models are missing or thin in our catalog: {listed}. Diesel results may leave out good options; see Known data gaps below.")
+        by_fuel = result["by_fuel"]
+        if len(by_fuel) > 1:
+            st.subheader("Best safety-rated pick for each fuel type")
+            table = by_fuel.assign(
+                car=by_fuel["brand"] + " " + by_fuel["model"] + " " + by_fuel["variant"],
+                price_lakh=(by_fuel["ex_showroom_price"] / 100000).round(2),
+                five_year_cost_lakh=(by_fuel["total_cost"] / 100000).round(2),
+            )
+            st.dataframe(table[["fuel", "car", "price_lakh", "five_year_cost_lakh", "safety_score", "score"]], hide_index=True)
         for group in ["rated", "all", "not rated"]:
             picks = result["picks"].get(group)
             if picks is None:

@@ -103,7 +103,11 @@ def recommend(costs, safety, budget, min_seats, fuels, transmission, preset, min
         part = ranked[ranked["group"] == name] if not ranked.empty else ranked
         if not part.empty:
             picks[name] = part.sort_values("score", ascending=False).drop_duplicates(["brand", "model"]).head(3)
-    return {"shortlist_size": len(shortlist), "picks": picks}
+    by_fuel = pd.DataFrame()
+    if not ranked.empty:
+        best = ranked[ranked["group"].isin(["rated", "all"])]
+        by_fuel = best.sort_values("score", ascending=False).drop_duplicates("fuel").reset_index(drop=True)
+    return {"shortlist_size": len(shortlist), "picks": picks, "by_fuel": by_fuel}
 
 
 def main():
