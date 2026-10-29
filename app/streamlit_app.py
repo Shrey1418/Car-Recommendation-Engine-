@@ -20,7 +20,7 @@ from car_recommender.config import load_config, resolve_path  # noqa: E402
 PRESET_LABELS = {
     "Balanced": "balanced",
     "Family: safety first": "family_safety",
-    "Budget saver": "budget_saver",
+    "Lowest cost to own, within my range": "budget_saver",
 }
 FUELS = ["Petrol", "Diesel", "CNG", "Electric", "Hybrid"]
 GROUP_TITLES = {
@@ -122,7 +122,7 @@ def main() -> None:
     with st.sidebar:
         st.header("Your need")
         preset_label = st.radio("What matters most", list(PRESET_LABELS))
-        budget_lakh = st.slider("Budget, ex-showroom (₹ lakh)", 3.0, 50.0, 12.0, 0.5)
+        price_low, price_high = st.slider("Price range, ex-showroom (lakh rupees)", 3.0, 50.0, (8.0, 15.0), 0.5)
         seats = st.selectbox("Minimum seats", [4, 5, 6, 7], index=1)
         fuels = st.multiselect("Fuel types", FUELS, default=FUELS)
         transmission = st.selectbox("Transmission", ["Any", "Manual", "Automatic"])
@@ -139,11 +139,12 @@ def main() -> None:
     result = recommend(
         costs,
         safety,
-        budget_lakh * 100000,
+        price_high * 100000,
         seats,
         fuels or None,
         None if transmission == "Any" else transmission,
         PRESET_LABELS[preset_label],
+        price_low * 100000,
     )
 
     if result["shortlist_size"] == 0:

@@ -32,9 +32,9 @@ def read_safety(path, ratio: float) -> pd.DataFrame:
     return safety.drop_duplicates(["brand", "model"])
 
 
-def apply_filters(costs: pd.DataFrame, budget: float, min_seats: int, fuels: list | None, transmission: str | None) -> pd.DataFrame:
+def apply_filters(costs: pd.DataFrame, budget: float, min_seats: int, fuels: list | None, transmission: str | None, min_price: float = 0.0) -> pd.DataFrame:
     on_sale = pd.to_numeric(costs["on_sale"], errors="coerce").eq(1)
-    keep = on_sale & (costs["ex_showroom_price"] <= budget) & (costs["seats"] >= min_seats)
+    keep = on_sale & costs["ex_showroom_price"].between(min_price, budget) & (costs["seats"] >= min_seats)
     if fuels:
         keep &= costs["fuel"].isin(fuels)
     if transmission:
@@ -94,9 +94,9 @@ def rank_cars(shortlist: pd.DataFrame, weights: dict) -> pd.DataFrame:
     return pd.concat(results, ignore_index=True) if results else pd.DataFrame()
 
 
-def recommend(costs, safety, budget, min_seats, fuels, transmission, preset) -> dict:
+def recommend(costs, safety, budget, min_seats, fuels, transmission, preset, min_price=0.0) -> dict:
     with_safety = costs.merge(safety, on=["brand", "model"], how="left")
-    shortlist = apply_filters(with_safety, budget, min_seats, fuels, transmission)
+    shortlist = apply_filters(with_safety, budget, min_seats, fuels, transmission, min_price)
     ranked = rank_cars(shortlist, PRESETS[preset])
     picks = {}
     for name in ["rated", "not rated", "all"]:
