@@ -12,6 +12,7 @@ logger = get_logger(__name__)
 
 DEFAULT_CITY = "Delhi"
 NOISE_WORDS = r"\b(cng|zng|mt|amt|hy|duo)\b"
+ENGINE_TAG = r"\b\d\.\d\s*l?\b"
 NOTE = "ex-showroom price + fuel only; insurance, service and registration not included"
 
 
@@ -93,6 +94,7 @@ def add_running_cost(variants: pd.DataFrame, prices: dict, annual_km: float, yea
 def simple_name(text: str) -> str:
     text = re.sub(r"[()\-]", " ", str(text).lower())
     text = re.sub(NOISE_WORDS, " ", text)
+    text = re.sub(ENGINE_TAG, " ", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -101,10 +103,16 @@ def same_variant_pairs(costs: pd.DataFrame) -> pd.DataFrame:
     petrol = costs[costs["fuel"] == "Petrol"].assign(name_key=lambda d: d["variant"].map(simple_name))
     alt = costs[costs["fuel"].isin(["Diesel", "CNG", "Hybrid"])].assign(name_key=lambda d: d["variant"].map(simple_name))
     pairs = alt.add_suffix("_alt").merge(
-        petrol.drop_duplicates(keys).add_suffix("_petrol"),
+        petrol.add_suffix("_petrol"),
         left_on=[key + "_alt" for key in keys],
         right_on=[key + "_petrol" for key in keys],
     )
+    same_engine = pairs["engine_cc_alt"].eq(pairs["engine_cc_petrol"])
+    engine_unknown = pairs["engine_cc_alt"].isna() | pairs["engine_cc_petrol"].isna()
+    compatible = pairs["fuel_alt"].ne("CNG") | same_engine | engine_unknown
+    pairs = pairs[compatible].assign(same_engine=same_engine[compatible])
+    pairs = pairs.sort_values(["same_engine", "ex_showroom_price_petrol"], ascending=[False, True])
+    pairs = pairs.drop_duplicates("variant_id_alt").drop(columns="same_engine")
     pairs["comparison_basis"] = "same variant, same transmission"
     return pairs
 
