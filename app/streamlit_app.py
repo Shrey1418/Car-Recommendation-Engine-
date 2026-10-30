@@ -17,6 +17,8 @@ from car_recommender.components.cost_model import (  # noqa: E402
 from car_recommender.components.scoring import read_safety, recommend  # noqa: E402
 from car_recommender.config import load_config, resolve_path  # noqa: E402
 
+APP_DATA = Path(__file__).resolve().parents[1] / "app_data"
+
 PRESET_LABELS = {
     "Balanced (mix of low cost and good safety)": "balanced",
     "Family: safety first": "family_safety",
@@ -42,8 +44,8 @@ def load_static():
     processed = resolve_path(cfg["paths"]["processed_dir"])
     assumptions = read_assumptions(manual / "cost_assumptions.csv")
     ratio = number(assumptions, "new_vs_old_protocol_ratio")
-    variants = pd.read_csv(processed / "variants_export.csv", encoding="utf-8-sig")
-    safety = read_safety(processed / "safety_ratings.csv", ratio)
+    variants = pd.read_csv(APP_DATA / "variants_app.csv", encoding="utf-8-sig")
+    safety = read_safety(APP_DATA / "safety_app.csv", ratio)
     price_table = read_fuel_prices(manual / "fuel_prices_india.csv")
     families = pd.read_csv(manual / "ev_families.csv", encoding="utf-8-sig")
     links = pd.read_csv(manual / "official_links.csv", dtype="string", encoding="utf-8-sig").fillna("")
