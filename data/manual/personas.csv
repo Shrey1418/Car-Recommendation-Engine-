@@ -1,16 +1,16 @@
 ﻿id,name,preset,price_low_lakh,price_high_lakh,min_seats,fuels,transmission,city,annual_km,expect
-1,First-time buyer small budget,budget_saver,5,8,4,Petrol|CNG,,Delhi,8000,"Small petrol or CNG hatchbacks and sedans; nothing above 8 lakh"
-2,Family of five safety first,family_safety,10,16,5,Petrol|Diesel|CNG|Electric|Hybrid,,Mumbai,12000,"Safety scores high (70+); safety-rated cars listed above unrated ones"
-3,Large family of seven,family_safety,12,20,7,Petrol|Diesel|CNG|Hybrid,,Mumbai,12000,"Only 7-seaters; none with fewer seats"
-4,High-km commuter,budget_saver,8,14,5,CNG|Diesel,Manual,Delhi,30000,"CNG or diesel manuals only; CNG verdict shows payback in months"
-5,EV-curious city commuter,balanced,12,20,5,Electric,Automatic,Chennai,10000,"EVs only; verdict versus a petrol sibling shown"
-6,Highway tourer,balanced,20,35,5,Petrol|Diesel|Hybrid,Automatic,Hyderabad,20000,"Bigger-ticket automatics inside 20 to 35 lakh"
-7,Premium comfort seeker,balanced,35,50,5,Petrol|Diesel|CNG|Electric|Hybrid,Automatic,Mumbai,10000,"Premium models; prices and fuel costs look sane"
-8,Retired couple low km,balanced,8,12,4,Petrol,Automatic,Pune,4000,"Petrol automatics; fuel cost matters little at low km"
-9,Safety-obsessed tight budget,family_safety,8,12,5,Petrol|Diesel|CNG|Electric|Hybrid,,Chennai,12000,"High-safety cars in 8 to 12 lakh; safety scores visible"
-10,Diesel SUV seeker (known gap),balanced,15,25,5,Diesel,,Delhi,20000,"Few results because diesel rows are missing; app gap notice must be visible"
-11,CNG saver,budget_saver,6,10,5,CNG,Manual,Lucknow,18000,"CNG manuals; payback verdict; Lucknow CNG price used"
-12,Hybrid curious,balanced,15,30,5,Hybrid,Automatic,Delhi,15000,"Few hybrids exist; a short list is fine"
-13,Impossible filters,balanced,3,4,7,Electric,Automatic,Delhi,12000,"No result; app shows a warning and does not crash"
-14,Wide open search,balanced,3,50,4,Petrol|Diesel|CNG|Electric|Hybrid,,Delhi,12000,"Sane picks across a huge range; no absurd results"
-15,Second car small EV,balanced,6,12,4,Electric,,Chennai,6000,"Small EVs; running cost per km very low"
+1,First-time buyer small budget,budget_saver,5,9,5,Petrol|CNG,,Delhi,8000,Small petrol or CNG hatchbacks and sedans; nothing above 8 lakh
+2,Family of five safety first,family_safety,10,16,5,Petrol|Diesel|CNG|Electric|Hybrid,,Mumbai,12000,Safety scores high (70+); safety-rated cars listed above unrated ones
+3,Large family of seven,family_safety,12,20,7,Petrol|Diesel|CNG|Hybrid,,Mumbai,12000,Only 7-seaters; none with fewer seats
+4,High-km commuter,budget_saver,8,14,5,CNG|Diesel|Petrol,Manual,Delhi,30000,CNG or diesel manuals only; CNG verdict shows payback in months
+5,EV-curious city commuter,balanced,12,20,5,Electric,Automatic,Chennai,10000,EVs only; verdict versus a petrol sibling shown
+6,Highway tourer,balanced,20,35,5,Petrol|Diesel|Hybrid,Automatic,Hyderabad,20000,Bigger-ticket automatics inside 20 to 35 lakh
+7,Premium comfort seeker,balanced,35,50,5,Petrol|Diesel|CNG|Electric|Hybrid,Automatic,Mumbai,10000,Premium models; prices and fuel costs look sane
+8,Retired couple low km,balanced,8,12,4,Petrol,Automatic,Pune,4000,Petrol automatics; fuel cost matters little at low km
+9,Safety-obsessed tight budget,family_safety,5,12,5,Petrol|Diesel|CNG|Electric|Hybrid,,Chennai,12000,High-safety cars in 8 to 12 lakh; safety scores visible
+10,Diesel SUV seeker (known gap),balanced,15,25,5,Diesel,,Delhi,20000,Few results because diesel rows are missing; app gap notice must be visible
+11,CNG saver,budget_saver,6,10,5,CNG,Manual,Lucknow,18000,CNG manuals; payback verdict; Lucknow CNG price used
+12,Hybrid curious,balanced,15,30,5,Hybrid,Automatic,Delhi,15000,Few hybrids exist; a short list is fine
+13,Impossible filters,balanced,3,4,7,Electric,Automatic,Delhi,12000,No result; app shows a warning and does not crash
+14,Wide open search,balanced,3,50,4,Petrol|Diesel|CNG|Electric|Hybrid,,Delhi,12000,Sane picks across a huge range; no absurd results
+15,Second car small EV,balanced,6,12,4,Electric,,Chennai,6000,Small EVs; running cost per km very low
