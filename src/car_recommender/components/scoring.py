@@ -107,7 +107,7 @@ def recommend(costs, safety, budget, min_seats, fuels, transmission, preset, min
     if not ranked.empty:
         best = ranked[ranked["group"].isin(["rated", "all"])]
         by_fuel = best.sort_values("score", ascending=False).drop_duplicates("fuel").reset_index(drop=True)
-    return {"shortlist_size": len(shortlist), "picks": picks, "by_fuel": by_fuel}
+    return {"shortlist_size": len(shortlist), "picks": picks, "by_fuel": by_fuel, "ranked": ranked}
 
 
 def main():
