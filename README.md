@@ -48,9 +48,9 @@ I ran 15 scenario personas (a first-time buyer, a family of seven, a high-km com
 
 | Result | First pass | After fixes |
 |---|---|---|
-| Pass | 9 | [fill] |
-| Partial | 5 | [fill] |
-| Fail | 1 | [fill] |
+| Pass | 9 | 11 |
+| Partial | 5 | 4 |
+| Fail | 1 | 0 |
 
 This is a sanity check on 15 scenarios I designed, not a user study or an accuracy measure. Run it with `python -m car_recommender.components.persona_test`.
 
