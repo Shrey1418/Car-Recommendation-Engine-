@@ -2,7 +2,7 @@
 
 A needs-based car recommender for the Indian market. You enter a price range, seats, fuel types and what matters most to you. The app ranks cars using TOPSIS on 5-year cost, running cost and crash-test safety, and explains each pick.
 
-**Live app:** [paste your Streamlit URL here]
+**Live app:** https://7z92f9uefywnvu6bhjgchu.streamlit.app
 
 This is a personal portfolio project, not financial advice.
 
@@ -33,24 +33,24 @@ This is a personal portfolio project, not financial advice.
 ## Cost assumptions
 
 - 12,000 km a year and 5 years of ownership by default, with no fuel price growth. Both are adjustable in the app.
-- Fuel prices are by city [source and date of fuel_prices_india.csv].
+- Fuel prices are city-level petrol, diesel and CNG prices from energy.thecore.in, as of October 2026. This is a third-party aggregator, not an official oil-company source, and prices change often.
 - Electricity is a blend of 80% home charging at ₹6 per kWh and 20% public fast charging at ₹20 per kWh. Untick home charging in the app to use the public price.
 - Insurance, service, registration and charging losses are not included.
 - Mileage and EV range are the manufacturers' claimed figures. Real-world numbers are usually lower.
 
 ## Validation
 
-I ran 15 scenario personas (a first-time buyer, a family of seven, a high-km commuter, a diesel SUV seeker, impossible filters and others) through the same code as the app. Every pick respected its filters. The test found three real problems, now fixed:
+I ran 15 scenario personas (a first-time buyer, a family of seven, a high-km commuter, a diesel SUV seeker, impossible filters and others) through the same code as the app. Every pick respected its filters. The test found three real problems. Two are fixed. The diesel one is only disclosed in the app, because the data is still missing:
 
 1. Diesel gaps were not visible to the user. The app now warns about them.
 2. A family without home charging was shown only electric cars. The app now has a home-charging switch and a "best pick for each fuel type" table.
 3. Wide price ranges returned only cheap cars. Filters now use a price range, with a price-tier criterion.
 
-| Result | Count |
-|---|---|
-| Pass | [fill from persona_verdicts.csv] |
-| Partial | [fill] |
-| Fail | [fill] |
+| Result | First pass | After fixes |
+|---|---|---|
+| Pass | 9 | [fill] |
+| Partial | 5 | [fill] |
+| Fail | 1 | [fill] |
 
 This is a sanity check on 15 scenarios I designed, not a user study or an accuracy measure. Run it with `python -m car_recommender.components.persona_test`.
 
