@@ -22,7 +22,7 @@ from car_recommender.config import load_config, resolve_path  # noqa: E402
 APP_DATA = Path(__file__).resolve().parents[1] / "app_data"
 
 APP_NAME = "CRAMAS"
-TAGLINE = "A place where you get the Best for your need"
+TAGLINE = "A place where you get the Best car for your need"
 KEY = ["brand", "model", "variant", "fuel", "transmission"]
 
 PRESET_LABELS = {
