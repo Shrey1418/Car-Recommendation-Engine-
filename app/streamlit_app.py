@@ -1,5 +1,6 @@
 import math
 import sys
+from html import escape
 from pathlib import Path
 
 import pandas as pd
@@ -36,6 +37,32 @@ PRESET_HELP = {
 }
 FUELS = ["Petrol", "Diesel", "CNG", "Electric", "Hybrid"]
 
+HEADERS = [
+    "Pick", "Brand", "Car", "Variant", "Fuel", "Gearbox", "Price (₹ L)", "5-yr cost (₹ L)",
+    "Running (₹/km)", "Safety", "Index rating", "Your rating", "Rated on", "Official page",
+]
+WIDTHS = [4, 6, 9, 12, 6, 7, 6, 7, 7, 6, 9, 9, 7, 5]
+NUMERIC = {"Price (₹ L)", "5-yr cost (₹ L)", "Running (₹/km)"}
+HEADER_HELP = {
+    "Price (₹ L)": "Ex-showroom price in lakh rupees.",
+    "5-yr cost (₹ L)": "Ex-showroom price plus 5 years of fuel, in lakh rupees.",
+    "Running (₹/km)": "Fuel or charging cost per kilometre.",
+    "Safety": "Average of adult and child crash-test scores, out of 100. A dash means not rated in our data.",
+    "Index rating": "Our fixed formula (balanced weights) across all cars on sale up to ₹50 lakh. It does not change with your answers.",
+    "Your rating": "The same method, but with your priority, among the cars that match your answers.",
+    "Rated on": "Cars with no safety rating are scored on cost only. Compare ratings only within the same value.",
+    "Official page": "The brand's official page, for comfort and convenience features.",
+}
+SORT_OPTIONS = {
+    "Best match (rated cars first)": (None, True),
+    "Your rating (high to low)": ("Your rating", False),
+    "Index rating (high to low)": ("Index rating", False),
+    "Price (low to high)": ("Price (₹ L)", True),
+    "5-year cost (low to high)": ("5-yr cost (₹ L)", True),
+    "Running cost (low to high)": ("Running (₹/km)", True),
+    "Safety (high to low)": ("Safety", False),
+}
+
 STYLE = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -53,38 +80,23 @@ p, li, label { font-size: 1rem; line-height: 1.6; }
 .st-key-qa [data-testid="stRadio"] div[role="radiogroup"] label p { font-size: 1.1rem; font-weight: 500; }
 .st-key-qa [data-testid="stCheckbox"] p { font-size: 1.2rem; font-weight: 700; }
 .st-key-qa div[data-baseweb="select"] { font-size: 1.05rem; }
+.cr-wrap { max-height: 560px; overflow-y: auto; overflow-x: hidden; border: 1px solid #27313C; border-radius: 12px; background: #171E26; }
+.cr-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.cr-table th { position: sticky; top: 0; z-index: 1; background: #1D2631; color: #E8EDF2; font-size: 1.05rem; font-weight: 700; text-align: left; padding: 12px 8px; border-bottom: 2px solid #38BDF8; line-height: 1.25; }
+.cr-table td { font-size: 0.95rem; font-weight: 500; padding: 9px 8px; border-bottom: 1px solid #27313C; word-wrap: break-word; vertical-align: middle; line-height: 1.3; }
+.cr-table tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+.cr-table tbody tr:hover { background: rgba(56, 189, 248, 0.10); }
+.cr-table tbody tr.cr-top { background: rgba(167, 139, 250, 0.20); }
+.cr-table .cr-num { text-align: right; }
+.cr-muted { color: #8A97A6; }
+.cr-rate { display: flex; align-items: center; gap: 8px; }
+.cr-bar { flex: 1; height: 8px; background: #27313C; border-radius: 4px; overflow: hidden; }
+.cr-bar i { display: block; height: 100%; background: #38BDF8; }
+.cr-rate.cr-you .cr-bar i { background: #A78BFA; }
+.cr-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.cr-link { color: #38BDF8; text-decoration: none; font-weight: 600; }
 </style>
 """
-
-TABLE_CONFIG = {
-    "Pick": st.column_config.TextColumn(width=62),
-    "Brand": st.column_config.TextColumn(width=80),
-    "Car": st.column_config.TextColumn(width=115),
-    "Variant": st.column_config.TextColumn(width=140),
-    "Fuel": st.column_config.TextColumn(width=75),
-    "Gearbox": st.column_config.TextColumn(width=95),
-    "Price (₹ L)": st.column_config.NumberColumn(format="%.2f", width=85, help="Ex-showroom price in lakh rupees."),
-    "5-yr cost (₹ L)": st.column_config.NumberColumn(
-        format="%.2f", width=105, help="Ex-showroom price plus 5 years of fuel, in lakh rupees."
-    ),
-    "Running (₹/km)": st.column_config.NumberColumn(format="%.2f", width=105),
-    "Safety": st.column_config.NumberColumn(
-        format="%d", width=70,
-        help="Average of adult and child crash-test scores, out of 100. Blank means not rated in our data.",
-    ),
-    "Index rating": st.column_config.ProgressColumn(
-        min_value=0, max_value=100, format="%d", width=105,
-        help="Our fixed formula (balanced weights) across all cars on sale up to ₹50 lakh. It does not change with your answers.",
-    ),
-    "Your rating": st.column_config.ProgressColumn(
-        min_value=0, max_value=100, format="%d", width=105,
-        help="The same method, but with your priority, among the cars that match your answers.",
-    ),
-    "Rated on": st.column_config.TextColumn(
-        width=110, help="Cars with no safety rating are scored on cost only. Compare ratings only within the same value."
-    ),
-    "Official page": st.column_config.LinkColumn(display_text="Open ↗", width=100),
-}
 
 
 @st.cache_data
@@ -309,6 +321,74 @@ def filter_table(table: pd.DataFrame) -> pd.DataFrame:
     return shown
 
 
+def sort_table(table: pd.DataFrame) -> pd.DataFrame:
+    col_sort, _ = st.columns([1, 3])
+    choice = col_sort.selectbox("Sort by", list(SORT_OPTIONS))
+    column, ascending = SORT_OPTIONS[choice]
+    if column is None:
+        return table
+    return table.sort_values(column, ascending=ascending, na_position="last", kind="stable")
+
+
+def number_text(value, pattern: str) -> str:
+    return "—" if pd.isna(value) else format(float(value), pattern)
+
+
+def rating_cell(value, css_class: str = "") -> str:
+    if pd.isna(value):
+        return '<span class="cr-muted">—</span>'
+    clipped = max(0.0, min(100.0, float(value)))
+    return (
+        f'<div class="cr-rate {css_class}"><div class="cr-bar"><i style="width:{clipped:.0f}%"></i></div>'
+        f"<span>{clipped:.0f}</span></div>"
+    )
+
+
+def safety_cell(value) -> str:
+    if pd.isna(value):
+        return '<span class="cr-muted" title="Not rated in our data">—</span>'
+    colour = "#4ADE80" if value >= 85 else "#FBBF24" if value >= 70 else "#F87171"
+    return f'<span class="cr-dot" style="background:{colour}"></span>{float(value):.0f}'
+
+
+def link_cell(url) -> str:
+    if isinstance(url, str) and url.startswith(("http://", "https://")):
+        return f'<a class="cr-link" href="{escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">Open ↗</a>'
+    return '<span class="cr-muted">—</span>'
+
+
+def cars_html(table: pd.DataFrame) -> str:
+    cols = "".join(f'<col style="width:{width}%">' for width in WIDTHS)
+    head = "".join(
+        f'<th class="{"cr-num" if name in NUMERIC else ""}" title="{escape(HEADER_HELP.get(name, ""))}">{escape(name)}</th>'
+        for name in HEADERS
+    )
+    rows = []
+    for r in table.to_dict("records"):
+        css = ' class="cr-top"' if r["Pick"] else ""
+        cells = [
+            f"<td>{escape(str(r['Pick']))}</td>",
+            f"<td>{escape(str(r['Brand']))}</td>",
+            f"<td>{escape(str(r['Car']))}</td>",
+            f"<td>{escape(str(r['Variant']))}</td>",
+            f"<td>{escape(str(r['Fuel']))}</td>",
+            f"<td>{escape(str(r['Gearbox']))}</td>",
+            f'<td class="cr-num">{number_text(r["Price (₹ L)"], ".2f")}</td>',
+            f'<td class="cr-num">{number_text(r["5-yr cost (₹ L)"], ".2f")}</td>',
+            f'<td class="cr-num">{number_text(r["Running (₹/km)"], ".2f")}</td>',
+            f"<td>{safety_cell(r['Safety'])}</td>",
+            f"<td>{rating_cell(r['Index rating'])}</td>",
+            f"<td>{rating_cell(r['Your rating'], 'cr-you')}</td>",
+            f"<td>{escape(str(r['Rated on']))}</td>",
+            f"<td>{link_cell(r['Official page'])}</td>",
+        ]
+        rows.append(f"<tr{css}>" + "".join(cells) + "</tr>")
+    return (
+        '<div class="cr-wrap"><table class="cr-table">'
+        f"<colgroup>{cols}</colgroup><thead><tr>{head}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
+    )
+
+
 def ranking_explanation() -> str:
     lines = []
     for label, key in PRESET_LABELS.items():
@@ -441,11 +521,16 @@ def main() -> None:
         table = cars_table(ranked, index, links, picks_df)
         if not table.empty:
             st.header("All matching cars")
-            shown = filter_table(table)
-            st.caption(f"Showing {len(shown)} of {len(table)} variants. Click a column header to sort.")
-            st.dataframe(shown, hide_index=True, height=520, column_config=TABLE_CONFIG)
+            shown = sort_table(filter_table(table))
             st.caption(
-                "Compare ratings only between cars with the same \"Rated on\" value. A blank safety score means "
+                f"Showing {len(shown)} of {len(table)} variants. Hover over a column name to see what it means."
+            )
+            if shown.empty:
+                st.info("No variants match these table filters. Loosen a filter above.")
+            else:
+                st.markdown(cars_html(shown), unsafe_allow_html=True)
+            st.caption(
+                "Compare ratings only between cars with the same \"Rated on\" value. A dash in Safety means "
                 "no rating in our data, which does not mean the car is unsafe."
             )
 
