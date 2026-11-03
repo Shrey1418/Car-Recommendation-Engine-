@@ -10,14 +10,30 @@ A needs-based car recommender for the Indian market. You enter a price range, se
 
 This is a personal portfolio project, not financial advice.
 
+The free hosted app goes to sleep when nobody is using it, so the first load can take about 30 seconds.
+
+## Screenshots
+
+**Quick Q&A**
+
+![Quick Q&A](docs/screenshots/cramas-top.png)
+
+**Your top 3 picks**
+
+![Top 3 picks](docs/screenshots/cramas-top3-pics.png)
+
+**All matching cars**
+
+![All matching cars table](docs/screenshots/cramas-table.png)
+
 ## What it does
 
 - Covers about 900 car variants in India (about 690 currently on sale), up to ₹50 lakh ex-showroom.
-- Filters by price range, seats, fuel, gearbox and city.
+- Asks a few quick questions (priority, price range, seats, fuel, gearbox, city, distance driven) and filters on the answers.
 - Ranks cars with TOPSIS using one of three priorities: balanced, family safety first, or lowest cost to own.
 - Works out a 5-year cost (ex-showroom price plus fuel) and the payback of CNG and electric cars against a petrol twin.
 - Shows safety with crash-test scores from Global NCAP and Bharat NCAP, with newer, stricter tests counting for more.
-- Lists every model in your range and highlights the top 3.
+- Shows your top 3 picks as cards, then every matching variant in a table with an Index rating (fixed formula) and Your rating (based on your priority), with sorting and filters.
 - Links to each model's official page for comfort and convenience features.
 
 ## How the ranking works
@@ -33,6 +49,7 @@ This is a personal portfolio project, not financial advice.
 
    "Price tier" rewards a higher price inside your range as a rough guide to more car for the money, because size, power and feature data is mostly missing.
 3. **Safety score** is the average of the adult and child crash-test scores. Scores from the older Global NCAP protocol are divided by 1.5. Cars with no rating are ranked separately on cost only, and are never given a guessed score.
+4. **Two ratings** are shown. **Your rating** uses the priority you chose, among the cars that match your answers. **Index rating** uses the balanced weights across all cars on sale up to ₹50 lakh, so it does not change with your answers.
 
 ## Cost assumptions
 
@@ -63,6 +80,7 @@ This is a sanity check on 15 scenarios I designed, not a user study or an accura
 - **Diesel:** many popular diesel models (for example Creta, Nexon, Harrier, Safari, Seltos) are missing or incomplete in the data. The app says so.
 - **Safety:** about 4 in 10 on-sale variants have no rating in the data. This does not mean they are unsafe.
 - **Features:** comfort and convenience features are not scored. The app links to the official pages.
+- **Price:** only the ex-showroom price is shown. On-road price (taxes and insurance) is not in the data.
 - **Power, torque and size** are mostly missing, so they are not used.
 - **Links:** some official links are brand homepages or could not be verified.
 - **EV comparison** uses the nearest-priced petrol variant of the sibling model, which favours a short payback.
@@ -76,7 +94,7 @@ This is a sanity check on 15 scenarios I designed, not a user study or an accura
 | Data collection | requests, requests-cache, BeautifulSoup, lxml, pypdf |
 | Storage | SQLite |
 | Ranking | TOPSIS written from scratch with NumPy and pandas |
-| App | Streamlit, hosted on Streamlit Community Cloud |
+| App | Streamlit with a custom dark theme and an HTML and CSS results table, hosted on Streamlit Community Cloud |
 
 ## Run it locally
 
@@ -107,4 +125,4 @@ The app reads the small files in `app_data/`. The raw, scraped and intermediate 
 
 ## Planned next
 
-Diesel data for the top models, fixing the official links, a resale-value model, natural-language input and an API. None of these are built yet.
+Custom weights, a compare view, reset filters and a share link; diesel data for the top models; fixing the official links. Later ideas: a power and torque filter once the data exists, on-road price, a features filter and a resale-value model. None of these are built yet.
