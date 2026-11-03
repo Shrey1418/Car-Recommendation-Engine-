@@ -1,6 +1,6 @@
 # CRAMAS
 
-*A place where you get the Best for your need*
+*A place where you get the Best car for your need*
 
 **Car recommendation engine for India**
 
