@@ -16,15 +16,15 @@ The free hosted app goes to sleep when nobody is using it, so the first load can
 
 **Quick Q&A**
 
-![Quick Q&A](docs/screenshots/cramas-top.png)
+![Quick Q&A](docs/Screenshots/cramas-top.png)
 
 **Your top 3 picks**
 
-![Top 3 picks](docs/screenshots/cramas-top3-pics.png)
+![Top 3 picks](docs/Screenshots/cramas-top3-pics.png)
 
 **All matching cars**
 
-![All matching cars table](docs/screenshots/cramas-table.png)
+![All matching cars table](docs/Screenshots/cramas-table.png)
 
 ## What it does
 
