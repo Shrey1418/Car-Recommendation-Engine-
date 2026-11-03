@@ -41,12 +41,18 @@ HEADERS = [
     "Pick", "Brand", "Car", "Variant", "Fuel", "Gearbox", "Price (₹ L)", "5-yr cost (₹ L)",
     "Running (₹/km)", "Safety", "Index rating", "Your rating", "Rated on", "Official page",
 ]
-WIDTHS = [4, 6, 9, 12, 6, 7, 6, 7, 7, 6, 9, 9, 7, 5]
+WIDTHS = [5, 6, 10, 12, 6, 7, 7, 7, 6, 6, 8, 8, 7, 5]
 NUMERIC = {"Price (₹ L)", "5-yr cost (₹ L)", "Running (₹/km)"}
+DISPLAY_NAMES = {
+    "Price (₹ L)": "Price (₹L)",
+    "5-yr cost (₹ L)": "5-yr cost",
+    "Running (₹/km)": "Cost/km",
+    "Official page": "Link",
+}
 HEADER_HELP = {
     "Price (₹ L)": "Ex-showroom price in lakh rupees.",
     "5-yr cost (₹ L)": "Ex-showroom price plus 5 years of fuel, in lakh rupees.",
-    "Running (₹/km)": "Fuel or charging cost per kilometre.",
+    "Running (₹/km)": "Fuel or charging cost per kilometre, in rupees.",
     "Safety": "Average of adult and child crash-test scores, out of 100. A dash means not rated in our data.",
     "Index rating": "Our fixed formula (balanced weights) across all cars on sale up to ₹50 lakh. It does not change with your answers.",
     "Your rating": "The same method, but with your priority, among the cars that match your answers.",
@@ -54,13 +60,13 @@ HEADER_HELP = {
     "Official page": "The brand's official page, for comfort and convenience features.",
 }
 SORT_OPTIONS = {
-    "Best match (rated cars first)": (None, True),
     "Your rating (high to low)": ("Your rating", False),
     "Index rating (high to low)": ("Index rating", False),
     "Price (low to high)": ("Price (₹ L)", True),
     "5-year cost (low to high)": ("5-yr cost (₹ L)", True),
     "Running cost (low to high)": ("Running (₹/km)", True),
     "Safety (high to low)": ("Safety", False),
+    "Brand (A to Z)": ("Brand", True),
 }
 
 STYLE = """
@@ -80,10 +86,10 @@ p, li, label { font-size: 1rem; line-height: 1.6; }
 .st-key-qa [data-testid="stRadio"] div[role="radiogroup"] label p { font-size: 1.1rem; font-weight: 500; }
 .st-key-qa [data-testid="stCheckbox"] p { font-size: 1.2rem; font-weight: 700; }
 .st-key-qa div[data-baseweb="select"] { font-size: 1.05rem; }
-.cr-wrap { max-height: 560px; overflow-y: auto; overflow-x: hidden; border: 1px solid #27313C; border-radius: 12px; background: #171E26; }
-.cr-table { width: 100%; table-layout: fixed; border-collapse: collapse; }
-.cr-table th { position: sticky; top: 0; z-index: 1; background: #1D2631; color: #E8EDF2; font-size: 1.05rem; font-weight: 700; text-align: left; padding: 12px 8px; border-bottom: 2px solid #38BDF8; line-height: 1.25; }
-.cr-table td { font-size: 0.95rem; font-weight: 500; padding: 9px 8px; border-bottom: 1px solid #27313C; word-wrap: break-word; vertical-align: middle; line-height: 1.3; }
+.cr-wrap { max-height: 560px; overflow: auto; border: 1px solid #27313C; border-radius: 12px; background: #171E26; }
+.cr-table { width: 100%; min-width: 1300px; table-layout: fixed; border-collapse: collapse; }
+.cr-table th { position: sticky; top: 0; z-index: 1; background: #1D2631; color: #E8EDF2; font-size: 1.05rem; font-weight: 700; text-align: left; padding: 12px 8px; border-bottom: 2px solid #38BDF8; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cr-table td { font-size: 0.95rem; font-weight: 500; padding: 9px 8px; border-bottom: 1px solid #27313C; vertical-align: middle; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cr-table tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
 .cr-table tbody tr:hover { background: rgba(56, 189, 248, 0.10); }
 .cr-table tbody tr.cr-top { background: rgba(167, 139, 250, 0.20); }
@@ -275,7 +281,7 @@ def cars_table(ranked: pd.DataFrame, index: pd.DataFrame, links: pd.DataFrame, t
 
     your = table["score"] * 100 if table["score"].max() <= 1 else table["score"]
     url = table["official_url"].astype(object).where(lambda s: s.fillna("").ne(""), None)
-    basis = {"rated": "Cost + safety", "not rated": "Cost only", "all": "All cars together"}
+    basis = {"rated": "With safety", "not rated": "Cost only", "all": "All together"}
 
     return pd.DataFrame(
         {
@@ -322,16 +328,27 @@ def filter_table(table: pd.DataFrame) -> pd.DataFrame:
 
 
 def sort_table(table: pd.DataFrame) -> pd.DataFrame:
-    col_sort, _ = st.columns([1, 3])
-    choice = col_sort.selectbox("Sort by", list(SORT_OPTIONS))
-    column, ascending = SORT_OPTIONS[choice]
-    if column is None:
+    col_sort, _ = st.columns([2, 1])
+    chosen = col_sort.multiselect(
+        "Sort by",
+        list(SORT_OPTIONS),
+        placeholder="Best match (rated cars first)",
+        help="Pick one or more. The first one sorts the table and the next ones break ties.",
+    )
+    if not chosen:
         return table
-    return table.sort_values(column, ascending=ascending, na_position="last", kind="stable")
+    columns = [SORT_OPTIONS[name][0] for name in chosen]
+    ascending = [SORT_OPTIONS[name][1] for name in chosen]
+    return table.sort_values(columns, ascending=ascending, na_position="last")
 
 
 def number_text(value, pattern: str) -> str:
     return "—" if pd.isna(value) else format(float(value), pattern)
+
+
+def text_cell(value) -> str:
+    text = escape(str(value))
+    return f'<td title="{text}">{text}</td>'
 
 
 def rating_cell(value, css_class: str = "") -> str:
@@ -360,26 +377,27 @@ def link_cell(url) -> str:
 def cars_html(table: pd.DataFrame) -> str:
     cols = "".join(f'<col style="width:{width}%">' for width in WIDTHS)
     head = "".join(
-        f'<th class="{"cr-num" if name in NUMERIC else ""}" title="{escape(HEADER_HELP.get(name, ""))}">{escape(name)}</th>'
+        f'<th class="{"cr-num" if name in NUMERIC else ""}" title="{escape(HEADER_HELP.get(name, DISPLAY_NAMES.get(name, name)))}">'
+        f"{escape(DISPLAY_NAMES.get(name, name))}</th>"
         for name in HEADERS
     )
     rows = []
     for r in table.to_dict("records"):
         css = ' class="cr-top"' if r["Pick"] else ""
         cells = [
-            f"<td>{escape(str(r['Pick']))}</td>",
-            f"<td>{escape(str(r['Brand']))}</td>",
-            f"<td>{escape(str(r['Car']))}</td>",
-            f"<td>{escape(str(r['Variant']))}</td>",
-            f"<td>{escape(str(r['Fuel']))}</td>",
-            f"<td>{escape(str(r['Gearbox']))}</td>",
+            text_cell(r["Pick"]),
+            text_cell(r["Brand"]),
+            text_cell(r["Car"]),
+            text_cell(r["Variant"]),
+            text_cell(r["Fuel"]),
+            text_cell(r["Gearbox"]),
             f'<td class="cr-num">{number_text(r["Price (₹ L)"], ".2f")}</td>',
             f'<td class="cr-num">{number_text(r["5-yr cost (₹ L)"], ".2f")}</td>',
             f'<td class="cr-num">{number_text(r["Running (₹/km)"], ".2f")}</td>',
             f"<td>{safety_cell(r['Safety'])}</td>",
             f"<td>{rating_cell(r['Index rating'])}</td>",
             f"<td>{rating_cell(r['Your rating'], 'cr-you')}</td>",
-            f"<td>{escape(str(r['Rated on']))}</td>",
+            text_cell(r["Rated on"]),
             f"<td>{link_cell(r['Official page'])}</td>",
         ]
         rows.append(f"<tr{css}>" + "".join(cells) + "</tr>")
